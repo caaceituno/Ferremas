@@ -1,0 +1,263 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  font-size: 14px;
+  overflow-y: scroll;
+}
+
+/* Utilidades generales */
+.position-absolute {
+  position: absolute;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fondo */
+.background {
+  width: 100%;
+  height: 932px;
+  background-image: linear-gradient(0deg, #fdfbfb 0%, #ebedee 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+/* Logo */
+.logo-container {
+  width: 227px;
+  height: 70px;
+  position: absolute;
+  top: 17px;
+  left: 29px;
+  overflow: hidden;
+}
+.logo-font {
+  color: #bf1a2c;
+  position: absolute;
+  top: 25px;
+  left: 85px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+}
+.logo {
+  width: 76px;
+  height: 70px;
+  background: url("../images/logo.png") center/contain no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Categorías */
+.categorias-container {
+  width: 168px;
+  height: 58px;
+  position: absolute;
+  top: 28px;
+  left: 292px;
+  overflow: visible;
+}
+.categorias-box {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 0.86px solid #343e49;
+  border-radius: 3px;
+}
+.categorias-menu-font {
+  width: 124px;
+  color: #343e49;
+  position: absolute;
+  top: 17px;
+  left: 9px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+}
+.arrow-img {
+  width: 15px;
+  height: 9px;
+  background: url("../images/arrow-img.png") center/cover no-repeat;
+  position: absolute;
+  top: 26px;
+  left: 143px;
+}
+.categorias-dropdown {
+  display: none;
+  position: absolute;
+  top: 58px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(52,62,73,0.2);
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.categorias-dropdown a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+}
+.categorias-dropdown a:hover {
+  background: #f1f1f1;
+}
+.categorias-container:hover .categorias-dropdown {
+  display: block;
+}
+.categorias-container:hover .arrow-img {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+/* Barra de búsqueda */
+.search-bar-container {
+  width: 983px;
+  height: 58px;
+  position: absolute;
+  top: 28px;
+  left: 472px;
+}
+.search-bar {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 0.86px solid #343e49;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+.search-bar-input {
+  flex: 1;
+  height: 100%;
+  padding: 0 15px;
+  border: none;
+  outline: none;
+  color: #343e49;
+  font-family: Montserrat, sans-serif;
+  font-size: 19px;
+}
+.search-bar-button {
+  width: 66px;
+  height: 100%;
+  background: #333e4a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.search-bar-button:hover {
+  background: #1a2026;
+}
+.search-bar-icon {
+  width: 31px;
+  height: 32px;
+  background: url("../images/search-img.png") center/contain no-repeat;
+}
+
+/* Barra superior */
+.upbar-container {
+  width: 364px;
+  height: 62px;
+  position: absolute;
+  top: 27px;
+  left: 1485px;
+}
+.carro-img {
+  width: 48px;
+  height: 45px;
+  position: absolute;
+  top: 7px;
+  left: 315px;
+  background: url("../images/carro.png") center/contain no-repeat;
+}
+.separador1,
+.separador2 {
+  height: 53px;
+  position: absolute;
+  top: 0;
+  border: 0.86px solid #343e49;
+}
+.separador1 {
+  left: 151px;
+}
+.separador2 {
+  left: 288px;
+}
+.inicio-font,
+.compras-font {
+  position: absolute;
+  top: 9px;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #343e49;
+  text-align: left;
+}
+.inicio-font {
+  left: 0;
+  width: 125px;
+}
+.compras-font {
+  left: 175px;
+  width: 97px;
+}
+
+/* Ubicación comprador */
+.ubi-container {
+  width: 206px;
+  height: 28px;
+  position: absolute;
+  top: 105px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+}
+.ubi-img {
+  width: 18px;
+  height: 26px;
+  background: url("../images/ubi-img.png") center/contain no-repeat;
+  flex-shrink: 0;
+}
+.ubi-font {
+  margin-left: 8px;
+  color: #343e49;
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+/* WhatsApp contacto */
+.wsp-container {
+  width: 320px;
+  height: 21px;
+  position: absolute;
+  top: 110px;
+  left: 1525px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wsp-font {
+  margin-left: 25px;
+  color: #343e49;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+}
+.wsp-img {
+  width: 21px;
+  height: 21px;
+  background: url("../images/wsp-img.png") center/contain no-repeat;
+}

@@ -1,0 +1,183 @@
+/* Fondo de inicio de sesión */
+.iniciobackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 932px;
+  background: url("../images/loginbackground.jpg") center / cover no-repeat;
+}
+
+/* Recuadro principal */
+.recuadroinicio {
+  position: absolute;
+  top: 203px;
+  left: 674px;
+  width: 531px;
+  height: 489px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 3.45px 3px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* Estilo base para todos los textos */
+.recuperacion-font,
+.creacion-font,
+.ingresopass-font,
+.ingresomail-font,
+.mail-font,
+.pass-font,
+.iniciosesion-font,
+.logoinicio-font,
+.ingreso-font {
+  position: absolute;
+  font-family: Montserrat;
+  color: rgb(52, 62, 73);
+  text-align: left;
+  opacity: 1;
+}
+
+/* Textos específicos */
+.recuperacion-font {
+  width: 322px;
+  top: 653px;
+  left: 781px;
+  font-size: 12px;
+}
+
+.creacion-font {
+  width: 91px;
+  top: 610px;
+  left: 898px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ingresopass-font {
+  width: 123px;
+  top: 503px;
+  left: 718px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.ingresomail-font {
+  width: 162px;
+  top: 417px;
+  left: 718px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.pass-font {
+  width: 80px;
+  top: 468px;
+  left: 707px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mail-font {
+  width: 129px;
+  top: 383px;
+  left: 707px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.iniciosesion-font {
+  width: 262px;
+  top: 294px;
+  left: 707px;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.logoinicio-font {
+  width: 95px;
+  top: 235px;
+  left: 760px;
+  font-size: 17px;
+  font-weight: bold;
+  color: rgb(191, 26, 44);
+}
+
+/* Botón de ingreso */
+.ingreso-btn {
+  position: absolute;
+  top: 549px;
+  left: 773px;
+  width: 334px;
+  height: 37px;
+  background: rgb(52, 62, 73);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ingreso-font {
+  top: 559px;
+  left: 913px;
+  width: 58px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Recuadros de correo y contraseña */
+.recuadropass,
+.recuadrocorreo {
+  position: absolute;
+  width: 462px;
+  height: 37px;
+  background: #fff;
+  border: 0.86px solid rgb(52, 62, 73);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.recuadropass {
+  top: 491px;
+  left: 707px;
+}
+
+.recuadrocorreo {
+  top: 405px;
+  left: 707px;
+}
+
+/* Separador horizontal */
+.separadorcuadro {
+  position: absolute;
+  top: 279px;
+  left: 707px;
+  width: 462px;
+  border: 0.86px solid rgb(52, 62, 73);
+}
+
+/* Logo */
+.logoinicio {
+  position: absolute;
+  top: 218px;
+  left: 703px;
+  width: 50px;
+  height: 47px;
+  background: url("../images/logo.png") no-repeat center center;
+  background-size: contain;
+  overflow: hidden;
+}
+
+/* Error en el login */
+
+.error-message {
+  color: rgb(230, 38, 38);
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  position: absolute;
+  top: 370px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+}

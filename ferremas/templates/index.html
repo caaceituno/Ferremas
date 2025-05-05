@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" /> 
+</head>
+<body>
+    <div class="background">
+
+        <!-- Logo -->
+        <div class="logo-container">
+            <span class="logo-font">FERREMAS</span>
+            <div class="logo"></div>
+        </div>
+
+        <!-- Categorías -->
+        <div class="categorias-container">
+            <div class="categorias-box"></div>
+            <span class="categorias-menu-font">Categorías</span>
+            <div class="arrow-img"></div>
+
+            <div class="categorias-dropdown">
+                <a href="#">Herramientas Manuales</a>
+                <a href="#">Materiales Básicos</a>
+                <a href="#">Equipos de Seguridad</a>
+                <a href="#">Herramientas Eléctricas</a>
+                <a href="#">Tornillos y Anclajes</a>
+                <a href="#">Fijaciones y Adhesivos</a>
+                <a href="#">Equipos de Medición</a>
+            </div>
+        </div>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar-container">
+            <div class="search-bar">
+                <input type="text" class="search-bar-input" placeholder="Buscar...">
+                <div class="search-bar-button">
+                    <div class="search-bar-icon"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra superior -->
+        <div class="upbar-container">
+            {% if user.is_authenticated %}
+                <div class="user-dropdown">
+                    <span class="inicio-font">Hola,<br>{{ user.first_name }}</span>
+                    <div class="dropdown-content">
+                        <a href="{% url 'logout' %}">Cerrar sesión</a>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" style="text-decoration: none;">
+                    <span class="inicio-font">Hola,<br>Inicia sesión</span>
+                </a>
+            {% endif %}
+            <div class="separador1"></div>
+            <span class="compras-font">Mis Compras</span>
+            <div class="separador2"></div>
+            <div class="carro-img"></div>
+        </div>
+
+        <!-- Ubicación -->
+        <div class="ubi-container">
+            <div class="ubi-img"></div>
+            <span class="ubi-font">Ingresa tu ubicación</span>
+        </div>
+
+        <!-- Banner -->
+        <div class="banner">
+            <div class="banner-container">
+                <div class="bannerImg"></div>
+            </div>
+            <div class="btn-prod"></div>
+            <span class="btn-prod-txt">¡Ver Productos!</span>
+            <div class="slogans">
+                <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
+                <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos</span>
+                <span class="slogan1-txt">A TU SERVICIO</span>
+            </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="wsp-container">
+            <span class="wsp-font">¿Necesitas ayuda? ¡Escríbenos!</span>
+            <div class="wsp-img"></div>
+        </div>
+
+        <!-- Categorías más buscadas -->
+        <div class="buscados-container">
+            <div class="categoria">
+                <span class="manuales-font">Herramientas Manuales</span>
+                <div class="manuales-img"></div>
+            </div>
+            <div class="categoria">
+                <span class="electricas-font">Herramientas Eléctricas</span>
+                <div class="electricas-img"></div>
+            </div>
+            <div class="categoria">
+                <span class="basicos-font">Materiales Básicos</span>
+                <div class="basicos-img"></div>
+            </div>
+            <div class="categoria">
+                <span class="medicion-font">Equipos de Medición</span>
+                <div class="medicion-img"></div>
+            </div>
+            <div class="categoria">
+                <span class="seguridad-font">Equipos de Seguridad</span>
+                <div class="seguridad-img"></div>
+            </div>
+            <span class="categorias-font">Categorías más buscadas</span>
+        </div>
+
+    </div>
+</body>
+</html>

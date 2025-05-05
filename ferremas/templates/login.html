@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" /> 
+</head>
+<body>
+    <div class="iniciosesion-container">
+        <!-- Fondo y recuadro de inicio de sesión -->
+        <div class="iniciobackground"></div>
+        <div class="recuadroinicio"></div>
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <!-- Campos de entrada de correo y contraseña -->
+            <div class="recuadrocorreo">
+                <input type="email" name="email" placeholder="Ingresa tu correo electrónico" 
+                    style="width: 100%; height: 100%; border: none; outline: none; padding: 10px; font-family: Montserrat;" required />
+            </div>
+            <span class="mail-font">Correo electrónico</span>
+
+            <div class="recuadropass">
+                <input type="password" name="password" placeholder="Ingresa tu contraseña" 
+                    style="width: 100%; height: 100%; border: none; outline: none; padding: 10px; font-family: Montserrat;" required />
+            </div>
+            <span class="pass-font">Contraseña</span>
+
+            <!-- Botón de ingreso -->
+            <button type="submit" style="position: absolute; top: 549px; left: 773px; width: 334px; height: 37px; background: rgb(52, 62, 73); border: none; border-radius: 3px; cursor: pointer;">
+                <span style="color: #fff; font-family: Montserrat; font-size: 13px; font-weight: 500;">Ingresar</span>
+            </button>
+            
+            <!-- Mostrar mensajes de error si existen -->
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </form>
+
+        <!-- Recuperación de cuenta -->
+        <span class="recuperacion-font">
+            ¿No puedes ingresar a tu cuenta? <span style="color: rgb(230, 38, 38);">Recupera el acceso</span>
+        </span>
+
+        <!-- Creación de cuenta -->
+        <a href="{% url 'register' %}" style="text-decoration: none;">
+            <span class="creacion-font">Crear cuenta</span>
+        </a>
+
+        <!-- Información adicional -->
+        <span class="iniciosesion-font">Inicia sesión para comprar</span>
+        <div class="separadorcuadro"></div>
+
+        <!-- Logo -->
+        <a href="{% url 'index' %}" style="text-decoration: none;">
+            <span class="logoinicio-font">FERREMAS</span>
+            <div class="logoinicio"></div>
+        </a>
+    </div>
+</body>
+</html>

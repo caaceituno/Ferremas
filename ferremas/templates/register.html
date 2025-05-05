@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Ferremas</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- Fondo -->
+    <div class="background"></div>
+
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="{% url 'index' %}" style="text-decoration: none;">
+            <span class="logo-font">FERREMAS</span>
+            <div class="logo"></div>
+        </a>
+    </div>
+
+    <!-- Categorías -->
+    <div class="categorias-container">
+        <div class="categorias-box"></div>
+        <span class="categorias-menu-font">Categorías</span>
+        <div class="arrow-img"></div>
+        <div class="categorias-dropdown">
+            <a href="#">Herramientas Manuales</a>
+            <a href="#">Materiales Básicos</a>
+            <a href="#">Equipos de Seguridad</a>
+            <a href="#">Herramientas Eléctricas</a>
+            <a href="#">Tornillos y Anclajes</a>
+            <a href="#">Fijaciones y Adhesivos</a>
+            <a href="#">Equipos de Medición</a>
+        </div>
+    </div>
+
+    <!-- Barra de búsqueda -->
+    <div class="search-bar-container">
+        <div class="search-bar">
+            <input type="text" class="search-bar-input" placeholder="Buscar..." />
+            <div class="search-bar-button">
+                <div class="search-bar-icon"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Opciones superiores -->
+    <div class="upbar-container">
+        <a href="{% url 'login' %}" style="text-decoration: none;">
+            <span class="inicio-font">Hola,<br>Inicia sesión</span>
+        </a>
+        <div class="separador1"></div>
+        <span class="compras-font">Mis Compras</span>
+        <div class="separador2"></div>
+        <div class="carro-img"></div>
+    </div>
+
+    <!-- Ubicación -->
+    <div class="ubi-container">
+        <div class="ubi-img"></div>
+        <span class="ubi-font">Ingresa tu ubicación</span>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="wsp-container">
+        <span class="wsp-font">¿Necesitas ayuda? ¡Escríbenos!</span>
+        <div class="wsp-img"></div>
+    </div>
+
+    <!-- Formulario de registro -->
+    <div class="register-container">
+        <div class="register-background"></div>
+        <div class="registerbox"></div>
+
+        <!-- Logo formulario -->
+        <div class="rlogo-container">
+            <span class="rlogo-font">FERREMAS</span>
+            <div class="rlogo"></div>
+        </div>
+
+        <!-- Título y recordatorio -->
+        <div class="registertitle-container">
+            <span class="iniciotitle-font">Inicia sesión o regístrate para comprar</span>
+            <span class="inicioremind-font">¿Tienes cuenta en Ferremas? <a href="{% url 'login' %}" style="color: rgb(230, 38, 38); text-decoration: underline;">Inicia sesión.</a></span>
+        </div>
+
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            
+            <!-- Correo -->
+            <div class="correo-container">
+                <span class="correo-font">Correo</span>
+                <input name="email" class="correo-entry" type="email" placeholder="Ingresa un correo" required />
+                <div class="correo-divider"></div>
+            </div>
+        
+            <!-- Nombre -->
+            <div class="nombre-container">
+                <span class="nombre-font">Nombre</span>
+                <input name="first_name" class="nombre-entry" type="text" placeholder="Ingresa un nombre" required />
+                <div class="nombre-divider"></div>
+            </div>
+        
+            <!-- Apellidos -->
+            <div class="apellido-container">
+                <span class="apellido-font">Apellidos</span>
+                <input name="last_name" class="apellido-entry" type="text" placeholder="Ingresa apellidos" required />
+                <div class="apellido-divider"></div>
+            </div>
+        
+            <!-- RUT -->
+            <div class="rut-container">
+                <span class="rut-font">RUT</span>
+                <input name="rut" class="rut-entry" type="text" placeholder="Ingresa RUT" required />
+                <div class="rut-divider"></div>
+            </div>
+        
+            <!-- Celular -->
+            <div class="celular-container">
+                <span class="celular-font">Celular</span>
+                <span class="celular-entry1">+569</span>
+                <input name="phone" class="celular-entry2" type="number" placeholder="Ingresa un celular" required />
+                <div class="celular-divider"></div>
+            </div>
+        
+            <!-- Contraseña -->
+            <div class="pass-container">
+                <span class="passr-font">Contraseña</span>
+                <input name="password" class="pass-entry" type="password" placeholder="Ingresa una contraseña" required />
+                <div class="pass-divider"></div>
+            </div>
+            
+            <!-- Reglas de contraseña -->
+            <div class="restricciones-container">
+                <span class="restricciones-font1">* Mín. 8 caracteres</span>
+                <span class="restricciones-font2">* 1 minúscula</span>
+                <span class="restricciones-font3">* 1 número</span>
+                <span class="restricciones-font4">* Sin espacio</span>
+                <span class="restricciones-font5">* 1 mayúscula</span>
+                <span class="restricciones-font6">* Sin usar '\¡¿"ºª·`´çñÑ</span>
+            </div>
+
+            <!-- Términos -->
+            <div class="rterminos-container">
+                <span class="rterminos-font">
+                    Acepto los <span style="color: rgb(230, 38, 38); text-decoration: underline;">términos y condiciones</span> de Mi cuenta.
+                </span>
+                <div class="rterminos-box"></div>
+            </div>
+            
+            <!-- Botón de registro -->
+            <div class="registrobtn-container">
+                <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer; width: 100%; height: 100%;">
+                    <div class="registrobtn-box"></div>
+                    <span class="registrobtn-font">Regístrate</span>
+                </button>
+            </div>
+        </form>
+
+        <!-- Recordatorio final -->
+        <span class="finalremind-font">¿Ya tienes cuenta? <a href="{% url 'login' %}" style="color: rgb(230, 38, 38); text-decoration: underline;">Inicia sesión</a></span>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,581 @@
+/*Registro*/
+.register-container {
+  width: 100%; 
+  height: 100%;
+  position: absolute;
+  top: 142px;
+  left: 0;
+}
+.register-background {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(0deg, #fdfbfb 0%, #cfd0d1 100%);
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+}
+.registerbox {
+  width: 763px;
+  height: 984px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 48px;
+  left: 582px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  overflow: hidden;
+}
+.registertitle-container {
+  width: 630px;
+  height: 74px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 139px;
+  left: 652px;
+  overflow: hidden;
+}
+/*Logo registro*/
+.rlogo-container {
+  width: 154px;
+  height: 47px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 75px;
+  left: 607px;
+  overflow: hidden;
+}
+.rlogo-font {
+  width: 96px;
+  color: rgba(191,26,44,1);
+  position: absolute;
+  top: 16px;
+  left: 57px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.rlogo {
+  width: 51px;
+  height: 47px;
+  background: url("../images/logo.png") center / cover no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+/*registro titulo*/
+.iniciotitle-font {
+  width: 630px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 32px;
+  opacity: 1;
+  text-align: left;
+}
+.inicioremind-font {
+  width: 332px;
+  position: absolute;
+  top: 56px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: SemiBold;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+/*registro correo*/
+.correo-container {
+  width: 612px;
+  height: 57px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 254px;
+  left: 652px;
+  overflow: hidden;
+}
+.correo-font {
+  width: 44px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.correo-entry {
+  width: 612px;
+  color: rgb(140, 140, 140);
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: none;
+}
+.correo-divider {
+  width: 612px;
+  position: absolute;
+  top: 55px;
+  border: 0.86px solid rgb(152, 152, 152);
+  opacity: 1;
+}
+/*registro nombre*/
+.nombre-container {
+  width: 612px;
+  height: 57px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 344px;
+  left: 652px;
+  overflow: hidden;
+}
+.nombre-font {
+  width: 55px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.nombre-entry {
+  width: 612px;
+  color: rgba(140,140,140,1);
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: none;
+}
+.nombre-divider {
+  width: 612px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  border: 1px solid rgba(152,152,152,1);
+}
+/*registro apellido*/
+.apellido-container {
+  width: 612px;
+  height: 57px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 434px;
+  left: 652px;
+  overflow: hidden;
+}
+.apellido-font {
+  width: 61px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.apellido-entry {
+  width: 612px;
+  color: rgba(140,140,140,1);
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: none;
+}
+.apellido-divider {
+  width: 612px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  border: 1px solid rgba(152,152,152,1);
+}
+/*registro RUT*/
+.rut-container {
+  width: 612px;
+  height: 57px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 524px;
+  left: 652px;
+  overflow: hidden;
+}
+.rut-font {
+  width: 28px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.rut-entry {
+  width: 612px;
+  color: rgba(140,140,140,1);
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: none;
+}
+.rut-divider {
+  width: 612px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  border: 1px solid rgba(152,152,152,1);
+}
+/*registro celular*/
+.celular-container {
+  width: 612px;
+  height: 57px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 614px;
+  left: 652px;
+  overflow: hidden;
+}
+.celular-font {
+  width: 47px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.celular-entry1 {
+  width: 32px;
+  color: rgba(50,59,69,1);
+  position: absolute;
+  top: 29px;
+  left: 10px;
+  font-family: Montserrat;
+  font-weight: Semibold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.celular-entry2 {
+  width: 612px;
+  color: rgba(140,140,140,1);
+  position: absolute;
+  top: 29px;
+  left: 46px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: none;
+}
+.celular-divider {
+  width: 612px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  border: 1px solid rgba(152,152,152,1);
+}
+/*registro password*/
+.pass-container {
+  width: 612px;
+  height: 57px;
+  background: url("../images/pass-container.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 704px;
+  left: 652px;
+  overflow: hidden;
+}
+.passr-font {
+  width: 76px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.pass-entry {
+  width: 612px;
+  color: rgba(140,140,140,1);
+  position: absolute;
+  top: 29px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+  border: none;
+  outline: none;
+  background: none;
+}
+.pass-divider {
+  width: 612px;
+  opacity: 1;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  border: 1px solid rgba(152,152,152,1);
+}
+/*password restricciones*/
+.restricciones-container {
+  width: 541px;
+  height: 31px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 794px;
+  left: 652px;
+  overflow: hidden;
+}
+.restricciones-font1 {
+  width: 111px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 11px;
+  opacity: 1;
+  text-align: left;
+}
+.restricciones-font2 {
+  width: 83px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 18px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 11px;
+  opacity: 1;
+  text-align: left;
+}
+.restricciones-font3 {
+  width: 69px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 204px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 11px;
+  opacity: 1;
+  text-align: left;
+}
+.restricciones-font4 {
+  width: 80px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 18px;
+  left: 204px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 11px;
+  opacity: 1;
+  text-align: left;
+}
+.restricciones-font5 {
+  width: 85px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 0px;
+  left: 408px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 11px;
+  opacity: 1;
+  text-align: left;
+}
+.restricciones-font6 {
+  width: 133px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 18px;
+  left: 408px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 11px;
+  opacity: 1;
+  text-align: left;
+}
+/*registro terminos*/
+.rterminos-container {
+  width: 346px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 854px;
+  left: 652px;
+  overflow: hidden;
+}
+.rterminos-font {
+  width: 318px;
+  position: absolute;
+  top: 2px;
+  left: 28px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+.rterminos-box {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 1px solid rgba(81,88,97,1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow: hidden;
+}
+/*registro boton*/
+.registrobtn-container {
+  width: 341px;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 918px;
+  left: 787px;
+  overflow: hidden;
+}
+.registrobtn-box {
+  width: 341px;
+  height: 44px;
+  background: rgba(191,26,44,1);
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  overflow: hidden;
+}
+.registrobtn-font {
+  width: 71px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 14px;
+  left: 135px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
+/*recordatorio*/
+.finalremind-font {
+  width: 207px;
+  position: absolute;
+  top: 974px;
+  left: 854px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 13px;
+  opacity: 1;
+  text-align: left;
+}
