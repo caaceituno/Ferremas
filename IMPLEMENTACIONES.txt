@@ -1,0 +1,294 @@
+# IMPLEMENTACIONES REALIZADAS EN FERREMAS
+
+## Resumen General
+
+Se ha desarrollado una aplicación web para la ferretería FERREMAS utilizando Django como framework de desarrollo. La aplicación incluye un sistema completo de autenticación de usuarios, páginas principales con navegación funcional y una base de datos SQLite para almacenar la información.
+
+## 1. Sistema de Autenticación de Usuarios
+
+### Modelos
+- **User**: Utilizamos el modelo de usuario predefinido de Django que incluye:
+  - Username (utilizamos el email como username)
+  - Email
+  - First Name (nombre)
+  - Last Name (apellidos)
+  - Password (contraseña hasheada)
+
+- **UserProfile**: Modelo personalizado para extender la información del usuario:
+  - RUT (sin puntos, pero conservando el guion)
+  - Teléfono (formato +56)
+
+### Funcionalidades
+- **Registro de usuarios**: Los usuarios pueden registrarse proporcionando:
+  - Correo electrónico
+  - Nombre
+  - Apellidos
+  - RUT
+  - Número de teléfono
+  - Contraseña
+
+- **Inicio de sesión**: Mediante correo electrónico y contraseña
+- **Cierre de sesión**: Funcionalidad disponible para usuarios autenticados
+
+### Validaciones
+- Verificación de correos electrónicos duplicados
+- Requisitos de contraseña segura (longitud mínima, mayúsculas, minúsculas, números)
+- Limpieza automática del formato de RUT (elimina puntos, mantiene guion)
+- Formateo automático de número de teléfono (agrega prefijo +56 si no lo tiene)
+
+## 2. Interfaz de Usuario
+
+### Templates Implementados
+- **index.html**: Página principal con banner y categorías de productos
+- **login.html**: Formulario de inicio de sesión
+- **register.html**: Formulario de registro
+
+### Características de la Interfaz
+- Diseño responsive con estilos CSS organizados
+- Menú de navegación completo
+- Menú desplegable para categorías de productos
+- Personalización de la interfaz según estado de autenticación:
+  - "Hola, [Nombre]" para usuarios autenticados
+  - "Hola, Inicia sesión" para usuarios no autenticados
+- Menú desplegable para cerrar sesión
+- Formularios funcionales con validación
+
+## 3. Organización del Código
+
+- **Separación de CSS**: Cada vista tiene su propio archivo CSS:
+  - main.css (estilos compartidos)
+  - index.css (página principal)
+  - login.css (página de inicio de sesión)
+  - register.css (página de registro)
+
+- **Estructura de URLs**: Sistema organizado de rutas:
+  - / - Página principal
+  - /login/ - Inicio de sesión
+  - /register/ - Registro de usuarios
+  - /logout/ - Cierre de sesión
+
+- **Uso de template tags Django**:
+  - {% load static %} para recursos estáticos
+  - {% url '...' %} para enlace entre páginas
+  - {% if user.is_authenticated %} para contenido condicional
+
+## 4. Base de Datos
+
+- SQLite (predeterminado de Django) con las siguientes tablas:
+  - auth_user: Datos básicos del usuario (Django auth)
+  - ferremas_userprofile: Datos extendidos (RUT, teléfono)
+
+## 5. Seguridad
+
+- CSRF protection en formularios
+- Contraseñas almacenadas con hash
+- Validación de campos en formularios
+- Autenticación segura mediante Django auth
+
+## 6. Instrucciones para lanzar el proyecto
+
+1. Activar entorno virtual:
+   ```
+   myenv\Scripts\activate
+   ```
+
+2. Ejecutar el servidor de desarrollo:
+   ```
+   python manage.py runserver
+   ```
+
+3. Acceder a la aplicación:
+   http://localhost:8000/
+
+## 7. Próximas mejoras planificadas
+
+- Implementación de recuperación de contraseña
+- Sistema de administración de productos
+- Proceso de compra
+- Historial de compras para usuarios registrados
+
+## 8. Archivos Modificados y su Funcionamiento
+
+### Archivos de Configuración
+1. **`ferredev/settings.py`**: 
+   - Incluye 'ferremas' en INSTALLED_APPS
+   - Configura los context_processors para acceder a variables de usuario en templates
+
+2. **`ferredev/urls.py`**:
+   ```python
+   from django.urls import path, include
+   
+   urlpatterns = [
+       path('admin/', admin.site.urls),
+       path('', include('ferremas.urls')),  # Incluye todas las URLs de la app ferremas
+   ]
+   ```
+
+### Archivos de la Aplicación
+3. **`ferremas/models.py`**:
+   ```python
+   from django.contrib.auth.models import User
+   
+   class UserProfile(models.Model):
+       user = models.OneToOneField(User, on_delete=models.CASCADE)
+       rut = models.CharField(max_length=12)
+       phone = models.CharField(max_length=15)
+       
+       def save(self, *args, **kwargs):
+           # Limpia los puntos del RUT pero mantiene el guion
+           self.rut = self.rut.replace('.', '')
+           
+           # Asegura que teléfono tenga prefijo +56
+           if not self.phone.startswith('+56'):
+               self.phone = f'+56{self.phone.lstrip("+")}'
+               
+           super().save(*args, **kwargs)
+   ```
+
+4. **`ferremas/views.py`**:
+   ```python
+   def index(request):
+       return render(request, 'index.html')
+   
+   def login(request):
+       if request.method == 'POST':
+           email = request.POST.get('email')
+           password = request.POST.get('password')
+           
+           try:
+               user = User.objects.get(email=email)
+               user = authenticate(request, username=user.username, password=password)
+               if user is not None:
+                   auth_login(request, user)
+                   return redirect('index')
+               else:
+                   messages.error(request, 'Credenciales inválidas')
+           except User.DoesNotExist:
+               messages.error(request, 'Usuario no encontrado')
+                   
+       return render(request, 'login.html')
+   
+   def register(request):
+       if request.method == 'POST':
+           # Obtener datos del formulario
+           email = request.POST.get('email')
+           first_name = request.POST.get('first_name')
+           last_name = request.POST.get('last_name')
+           rut = request.POST.get('rut')
+           phone = request.POST.get('phone')
+           password = request.POST.get('password')
+           
+           # Verificar si el usuario ya existe
+           if User.objects.filter(email=email).exists():
+               messages.error(request, 'Este correo ya está registrado')
+               return render(request, 'register.html')
+           
+           # Crear usuario
+           user = User.objects.create_user(
+               username=email,
+               email=email,
+               password=password,
+               first_name=first_name,
+               last_name=last_name
+           )
+           
+           # Crear perfil con campos adicionales
+           UserProfile.objects.create(
+               user=user,
+               rut=rut,
+               phone=phone
+           )
+           
+           # Iniciar sesión automáticamente
+           auth_login(request, user)
+           return redirect('index')
+           
+       return render(request, 'register.html')
+   
+   def logout_view(request):
+       logout(request)
+       return redirect('index')
+   ```
+
+5. **`ferremas/urls.py`**:
+   ```python
+   from django.urls import path
+   from . import views
+   
+   urlpatterns = [
+       path('', views.index, name='index'),
+       path('login/', views.login, name='login'),
+       path('register/', views.register, name='register'),
+       path('logout/', views.logout_view, name='logout'),
+   ]
+   ```
+
+6. **`ferremas/admin.py`**:
+   ```python
+   from django.contrib import admin
+   from .models import UserProfile
+   
+   admin.site.register(UserProfile)
+   ```
+
+### Templates
+7. **`ferremas/templates/index.html`**:
+   - Muestra "Hola, [Nombre]" cuando hay un usuario autenticado
+   - Muestra "Hola, Inicia sesión" para usuarios no autenticados
+   - Incluye menú desplegable para cerrar sesión
+
+8. **`ferremas/templates/login.html`**:
+   - Formulario POST para enviar datos de autenticación:
+     ```html
+     <form method="POST" action="{% url 'login' %}">
+         {% csrf_token %}
+         <!-- Campos email y password -->
+         <button type="submit">Ingresar</button>
+     </form>
+     ```
+
+9. **`ferremas/templates/register.html`**:
+   - Formulario POST para enviar datos de registro:
+     ```html
+     <form method="POST" action="{% url 'register' %}">
+         {% csrf_token %}
+         <!-- Campos email, nombre, apellidos, rut, teléfono, contraseña -->
+         <button type="submit">Regístrate</button>
+     </form>
+     ```
+
+## 9. Flujo de Registro e Inicio de Sesión
+
+### Proceso de Registro:
+1. El usuario completa el formulario en la página de registro con:
+   - Correo electrónico
+   - Nombre
+   - Apellidos
+   - RUT
+   - Número de teléfono
+   - Contraseña
+
+2. Al enviar el formulario, la vista `register`:
+   - Verifica que el email no esté ya registrado
+   - Crea un nuevo objeto User con los datos básicos
+   - Crea un objeto UserProfile asociado con RUT y teléfono
+   - Inicia sesión automáticamente
+   - Redirige a la página principal
+
+### Proceso de Inicio de Sesión:
+1. El usuario ingresa correo y contraseña en la página de login
+2. La vista `login`:
+   - Busca un usuario con ese email
+   - Verifica la contraseña
+   - Si las credenciales son correctas, inicia la sesión
+   - Redirige a la página principal
+
+### Proceso de Cierre de Sesión:
+1. El usuario hace clic en "Cerrar sesión" en el menú desplegable
+2. La vista `logout_view`:
+   - Cierra la sesión del usuario
+   - Redirige a la página principal
+
+---
+
+Desarrollado para Ferremas - 2025
