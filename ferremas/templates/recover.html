@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro Ferremas</title>
+    <title>Recuperar Contraseña - Ferremas</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-    <link href="./css/main.css" rel="stylesheet" />
-    <link href="./css/login.css" rel="stylesheet" />
-    <link href="./css/recover.css" rel="stylesheet" />
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" /> 
+    <link href="{% static 'css/recover.css' %}" rel="stylesheet" /> 
 </head>
 <body>
 
     <!-- Fondo -->
     <div class="background"></div>
 
-    <!-- Logo -->
+    <!-- Logo con enlace a la página principal -->
     <div class="logo-container">
-        <span class="logo-font">FERREMAS</span>
-        <div class="logo"></div>
+        <a href="{% url 'index' %}" style="text-decoration: none;">
+            <span class="logo-font">FERREMAS</span>
+            <div class="logo"></div>
+        </a>
     </div>
 
     <!-- Categorías -->
@@ -46,9 +49,11 @@
         </div>
     </div>
 
-    <!-- Opciones superiores -->
+    <!-- Opciones superiores con enlace directo a login -->
     <div class="upbar-container">
-        <span class="inicio-font">Hola,<br>Inicia sesión</span>
+        <a href="{% url 'login' %}" style="text-decoration: none;">
+            <span class="inicio-font">Hola,<br>Inicia sesión</span>
+        </a>
         <div class="separador1"></div>
         <span class="compras-font">Mis Compras</span>
         <div class="separador2"></div>

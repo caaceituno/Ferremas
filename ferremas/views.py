@@ -67,3 +67,18 @@ def register(request):
 def logout_view(request):
     logout(request)
     return redirect('index')
+
+def recover(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        
+        # Aquí deberías implementar la lógica para enviar un correo de recuperación
+        # Por simplicidad, solo mostramos un mensaje
+        messages.success(request, 'Se ha enviado un correo de recuperación a {}'.format(email))
+        
+    return render(request, 'recover.html')
+
+def products(request):
+    # Aquí deberías implementar la lógica para mostrar los productos
+    # Por simplicidad, solo mostramos un mensaje
+    return render(request, 'products.html')
