@@ -1,0 +1,291 @@
+.products-background {
+  width: 100%;
+  height: 790px;
+  background-image: linear-gradient(0deg, #fdfbfb 0%, #cfd0d1 100%);
+  opacity: 1;
+  position: absolute;
+  top: 142px;
+  left: 0px;
+  overflow: hidden;
+}
+.seccionsuperior {
+  width: 1692px;
+  height: 112px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 201px;
+  left: 94px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  overflow: hidden;
+}
+.barrainferior {
+  width: 1692px;
+  height: 68px;
+  background: rgb(255, 255, 255);
+  opacity: 1;
+  position: absolute;
+  top: 843px;
+  left: 94px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  overflow: hidden;
+}
+.orden-container {
+  width: 312px;
+  height: 59px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 229px;
+  left: 129px;
+  overflow: hidden;
+}
+.orden-separador {
+  width: 312px;
+  opacity: 1;
+  position: absolute;
+  top: 57px;
+  left: 0px;
+  border: 1px solid #DDDDDD;
+}
+.orden1-font {
+  width: 104px;
+  color: rgba(171,171,175,1);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.orden2-font {
+  color: rgba(49,49,49,1);
+  position: absolute;
+  top: 24px;
+  left: 0px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 16px;
+  opacity: 1;
+  text-align: left;
+}
+.orden-arrow {
+  width: 15px;
+  height: 9px;
+  background: url("../images/arrow-img.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 31px;
+  left: 293px;
+  overflow: hidden;
+}
+.seccion-font {
+  width: 277px;
+  color: rgba(52,62,73,1);
+  position: absolute;
+  top: 163px;
+  left: 14px;
+  font-family: Montserrat;
+  font-weight: Regular;
+  font-size: 17px;
+  opacity: 1;
+  text-align: left;
+}
+.resultados-font {
+  width: 153px;
+  color: rgba(49,49,49,1);
+  position: absolute;
+  top: 868px;
+  left: 113px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+/* Contenedor de la paginación */
+.paginationup-container {
+  position: absolute; 
+  top: 239px;
+  left: 1563px;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.paginationlow-container {
+  position: absolute; 
+  top: 858px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+/* Alineación y estilo base de los números */
+.pagination .page-link {
+  border: none;
+  color: #455260;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin: 0 6px;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: Bold;
+  font-size: 19px;
+}
+
+/* Círculo negro para el activo */
+.pagination .page-item.active .page-link {
+  background-color: #455260;
+  color: #fff;
+}
+
+/* Hover solo para números, no flechas */
+.pagination .page-item:not(.active):not(:first-child):not(:last-child) .page-link:hover {
+  background-color: rgba(69, 82, 96, 0.45);
+}
+
+/* Estilo para las flechas (< y >) */
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  color: #333;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+/* Sin hover para las flechas */
+.pagination .page-item:first-child .page-link:hover,
+.pagination .page-item:last-child .page-link:hover {
+  background-color: transparent;
+  color: #333;
+}
+
+.product-box {
+  width: 276px;
+  height: 449px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 345px;
+  left: 94px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  overflow: hidden;
+}
+.add-box {
+  width: 237px;
+  height: 45px;
+  background: rgba(3,106,188,1);
+  opacity: 1;
+  position: absolute;
+  top: 732px;
+  left: 113px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+}
+.add-font {
+  width: 136px;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 745px;
+  left: 164px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+.pricetag-font {
+  width: 66px;
+  color: rgba(105,105,105,1);
+  position: absolute;
+  top: 698px;
+  left: 105px;
+  font-family: Montserrat;
+  font-weight: Medium;
+  font-size: 17px;
+  opacity: 1;
+  text-align: left;
+}
+.producto-font {
+  width: 201px;
+  color: rgba(70,70,73,1);
+  position: absolute;
+  top: 655px;
+  left: 105px;
+  font-family: Montserrat;
+  font-weight: Bold;
+  font-size: 14px;
+  opacity: 1;
+  text-align: left;
+}
+.marca-font {
+  width: 265px;
+  color: rgba(109,109,109,1);
+  position: absolute;
+  top: 634px;
+  left: 105px;
+  font-family: Montserrat;
+  font-weight: SemiBold;
+  font-size: 12px;
+  opacity: 1;
+  text-align: left;
+}
+.producto-img {
+  width: 276px;
+  height: 276px;
+  background: url("../images/producto-test.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 345px;
+  left: 94px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  overflow: hidden;
+}
+.producto-separador {
+  width: 276px;
+  opacity: 1;
+  position: absolute;
+  top: 621px;
+  left: 94px;
+  border: 1px solid #dddddddd;
+}
