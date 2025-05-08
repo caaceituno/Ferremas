@@ -84,17 +84,27 @@
                             <button class="dropdown-trigger flex items-center text-gray-700 hover:text-red-700">
                                 <i class="fas fa-user-circle text-2xl"></i>
                                 <span class="ml-2 hidden md:inline-block">
-                                    <span class="block font-medium">Hola, inicia sesión</span>
+                                    {% if user.is_authenticated %}
+                                        <span class="block font-medium">Hola, {{ user.first_name }}</span>
+                                    {% else %}
+                                        <span class="block font-medium">Hola, inicia sesión</span>
+                                    {% endif %}
                                 </span>
                             </button>
                             <div class="user-menu dropdown-content">
                                 <div class="user-menu-container">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'logout' %}" class="user-menu-item">
+                                            <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Cerrar sesión
+                                        </a>
+                                    {% else %}                                    
                                     <a href="{% url 'login' %}" class="user-menu-item">
                                         <i class="fas fa-sign-in-alt mr-2 text-gray-500"></i> Iniciar sesión
                                     </a>
                                     <a href="{% url 'register' %}" class="user-menu-item">
                                         <i class="fas fa-user-plus mr-2 text-gray-500"></i> Registrarse
                                     </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -138,7 +148,7 @@
         
         <div class="slogans">
             <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
-            <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos</span>
+            <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos.</span>
             <span class="slogan1-txt">A TU SERVICIO</span>
         </div>
     </div>
