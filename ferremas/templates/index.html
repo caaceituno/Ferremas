@@ -5,119 +5,191 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
     {% load static %}
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/index.css' %}" rel="stylesheet" /> 
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="background">
-
-        <!-- Logo -->
-        <div class="logo-container">
-            <span class="logo-font">FERREMAS</span>
-            <div class="logo"></div>
-        </div>
-
-        <!-- Categorías -->
-        <div class="categorias-container">
-            <div class="categorias-box"></div>
-            <span class="categorias-menu-font">Categorías</span>
-            <div class="arrow-img"></div>
-
-            <div class="categorias-dropdown">
-                <a href="#">Herramientas Manuales</a>
-                <a href="#">Materiales Básicos</a>
-                <a href="#">Equipos de Seguridad</a>
-                <a href="#">Herramientas Eléctricas</a>
-                <a href="#">Tornillos y Anclajes</a>
-                <a href="#">Fijaciones y Adhesivos</a>
-                <a href="#">Equipos de Medición</a>
-            </div>
-        </div>
-
-        <!-- Barra de búsqueda -->
-        <div class="search-bar-container">
-            <div class="search-bar">
-                <input type="text" class="search-bar-input" placeholder="Buscar...">
-                <div class="search-bar-button">
-                    <div class="search-bar-icon"></div>
+    <!-- Navbar -->
+    <nav class="bg-white navbar-shadow sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Primera fila del navbar -->
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo con enlace a página principal -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="{% url 'index' %}" class="flex items-center">
+                        <img class="h-10 w-auto" src="{% static 'images/logo.png' %}" alt="Logo Ferremas">
+                        <span class="ml-2 text-xl font-bold text-red-700">FERREMAS</span>
+                    </a>
                 </div>
-            </div>
-        </div>
 
-        <!-- Barra superior -->
-        <div class="upbar-container">
-            {% if user.is_authenticated %}
-                <div class="user-dropdown">
-                    <span class="inicio-font">Hola,<br>{{ user.first_name }}</span>
-                    <div class="dropdown-content">
-                        <a href="{% url 'logout' %}">Cerrar sesión</a>
+                <!-- Barra de búsqueda -->
+                <div class="flex-1 flex justify-center px-4">
+                    <div class="w-full max-w-2xl relative flex">
+                        <!-- Dropdown de categorías -->
+                        <div class="categories-dropdown relative">
+                            <button class="dropdown-trigger bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-l-md flex items-center h-full">
+                                <i class="fas fa-bars mr-2"></i>
+                                <span>Categorías</span>
+                            </button>
+                            <div class="categories-menu dropdown-content">
+                                <div class="py-1">
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-tools mr-2 text-gray-500"></i> Herramientas Manuales
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-boxes mr-2 text-gray-500"></i> Materiales Básicos
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-hard-hat mr-2 text-gray-500"></i> Equipos de Seguridad
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-bolt mr-2 text-gray-500"></i> Herramientas Eléctricas
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-screwdriver mr-2 text-gray-500"></i> Tornillos y Anclajes
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-glue mr-2 text-gray-500"></i> Fijaciones y Adhesivos
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-ruler-combined mr-2 text-gray-500"></i> Equipos de Medición
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Input de búsqueda -->
+                        <input type="text" placeholder="Buscar herramientas, materiales..." 
+                               class="search-input px-4 py-2 w-full border-t border-b border-gray-300 focus:outline-none focus:border-red-300">
+                        
+                        <!-- Botón de búsqueda -->
+                        <button class="bg-gray-800 hover:bg-red-700 text-white px-4 py-2 rounded-r-md">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </div>
-            {% else %}
-                <a href="{% url 'login' %}" style="text-decoration: none;">
-                    <span class="inicio-font">Hola,<br>Inicia sesión</span>
-                </a>
-            {% endif %}
-            <div class="separador1"></div>
-            <span class="compras-font">Mis Compras</span>
-            <div class="separador2"></div>
-            <div class="carro-img"></div>
-        </div>
 
-        <!-- Ubicación -->
-        <div class="ubi-container">
-            <div class="ubi-img"></div>
-            <span class="ubi-font">Ingresa tu ubicación</span>
-        </div>
+                <!-- Menú de usuario y carrito -->
+                <div class="flex items-center">
+                    <!-- Ubicación -->
+                    <div class="hidden md:flex items-center mr-6">
+                        <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                    </div>
+                    
+                    <!-- Usuario con enlaces a login y registro -->
+                    <div class="user-dropdown ml-4">
+                        <div class="dropdown-area">
+                            <button class="dropdown-trigger flex items-center text-gray-700 hover:text-red-700">
+                                <i class="fas fa-user-circle text-2xl"></i>
+                                <span class="ml-2 hidden md:inline-block">
+                                    <span class="block font-medium">Hola, inicia sesión</span>
+                                </span>
+                            </button>
+                            <div class="user-menu dropdown-content">
+                                <div class="user-menu-container">
+                                    <a href="{% url 'login' %}" class="user-menu-item">
+                                        <i class="fas fa-sign-in-alt mr-2 text-gray-500"></i> Iniciar sesión
+                                    </a>
+                                    <a href="{% url 'register' %}" class="user-menu-item">
+                                        <i class="fas fa-user-plus mr-2 text-gray-500"></i> Registrarse
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carrito con enlace a productos -->
+                    <div class="ml-4 relative">
+                        <a href="{% url 'products' %}" class="flex items-center text-gray-700 hover:text-red-700">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-        <!-- Banner -->
-        <div class="banner">
-            <div class="banner-container">
-                <div class="bannerImg"></div>
-            </div>
-            
-            <a href="{% url 'products' %}" style="text-decoration: none; display: block; position: relative;">
-                <div class="btn-prod"></div>
-                <span class="btn-prod-txt">¡Ver Productos!</span>
-            </a>
-            
-            <div class="slogans">
-                <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
-                <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos</span>
-                <span class="slogan1-txt">A TU SERVICIO</span>
+            <!-- Segunda fila del navbar (ubicación móvil) -->
+            <div class="md:hidden py-2 border-t border-gray-200">
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                </div>
             </div>
         </div>
+    </nav>
 
-        <!-- WhatsApp -->
-        <div class="wsp-container">
-            <span class="wsp-font">¿Necesitas ayuda? ¡Escríbenos!</span>
-            <div class="wsp-img"></div>
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-button bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+        <i class="fab fa-whatsapp text-2xl mr-2"></i>
+        <span>¿Necesitas ayuda? ¡Escríbenos!</span>
+    </a>
+
+    <!-- Banner -->
+    <div class="banner">
+        <div class="banner-container">
+            <div class="bannerImg"></div>
         </div>
-
-        <!-- Categorías más buscadas -->
-        <div class="buscados-container">
-            <div class="categoria">
-                <span class="manuales-font">Herramientas Manuales</span>
-                <div class="manuales-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="electricas-font">Herramientas Eléctricas</span>
-                <div class="electricas-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="basicos-font">Materiales Básicos</span>
-                <div class="basicos-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="medicion-font">Equipos de Medición</span>
-                <div class="medicion-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="seguridad-font">Equipos de Seguridad</span>
-                <div class="seguridad-img"></div>
-            </div>
-            <span class="categorias-font">Categorías más buscadas</span>
+        
+        <a href="{% url 'products' %}" style="text-decoration: none; display: block; position: relative;">
+            <div class="btn-prod"></div>
+            <span class="btn-prod-txt">¡Ver Productos!</span>
+        </a>
+        
+        <div class="slogans">
+            <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
+            <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos</span>
+            <span class="slogan1-txt">A TU SERVICIO</span>
         </div>
-
     </div>
+
+    <!-- Categorías más buscadas -->
+    <div class="buscados-container">
+        <div class="categoria">
+            <span class="manuales-font">Herramientas Manuales</span>
+            <div class="manuales-img"></div>
+        </div>
+        <div class="categoria">
+            <span class="electricas-font">Herramientas Eléctricas</span>
+            <div class="electricas-img"></div>
+        </div>
+        <div class="categoria">
+            <span class="basicos-font">Materiales Básicos</span>
+            <div class="basicos-img"></div>
+        </div>
+        <div class="categoria">
+            <span class="medicion-font">Equipos de Medición</span>
+            <div class="medicion-img"></div>
+        </div>
+        <div class="categoria">
+            <span class="seguridad-font">Equipos de Seguridad</span>
+            <div class="seguridad-img"></div>
+        </div>
+        <span class="categorias-font">Categorías más buscadas</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-container button:last-child');
+            
+            // Función para realizar la búsqueda
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query) {
+                    alert(`Buscando: ${query}`);
+                    // Aquí iría la lógica real de búsqueda
+                }
+            }
+            
+            // Event listeners
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            searchButton.addEventListener('click', performSearch);
+        });
+    </script>
 </body>
 </html>
