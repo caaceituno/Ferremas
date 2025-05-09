@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Fondo -->
+    <div class="background"></div>
     <!-- Navbar -->
     <nav class="bg-white navbar-shadow sticky top-0 z-50 w-full">
         <div class="max-w-7xl mx-auto px-4">
@@ -142,13 +144,14 @@
         </div>
         
         <a href="{% url 'products' %}" style="text-decoration: none; display: block; position: relative;">
-            <div class="btn-prod"></div>
-            <span class="btn-prod-txt">¡Ver Productos!</span>
+            <div class="btn-prod">
+                <span class="btn-prod-txt">¡Ver Productos!</span>
+            </div>
         </a>
         
         <div class="slogans">
-            <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
-            <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos.</span>
+            <span class="slogan3-txt">Descubre las mejores herramientas para tus proyectos.</span>
+            <span class="slogan2-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
             <span class="slogan1-txt">A TU SERVICIO</span>
         </div>
     </div>

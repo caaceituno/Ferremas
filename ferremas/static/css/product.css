@@ -1,0 +1,334 @@
+.buy-window {
+  width: 1623px;
+  height: 726px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 173px;
+  left: 128px;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  overflow: hidden;
+}
+.bigproduct-img {
+  width: 532px;
+  height: 532px;
+  background: url("../images/producto-test.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 265px;
+  left: 206px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.shopbutton {
+  width: 379px;
+  height: 71px;
+  background: rgba(3, 106, 188, 1);
+  color: white; /* color del texto */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  border-radius: 9px;
+  position: absolute;
+  top: 454px;
+  left: 1319px;
+  opacity: 1;
+  overflow: hidden;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shopbutton:hover {
+  background: rgba(2, 85, 150, 1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.productname-font {
+  width: 839px;
+  position: absolute;
+  top: 247px;
+  left: 805px;
+  font-size: 40px;
+  color: rgba(70,70,73,1);
+  font-weight: Bold;
+}
+.brandname-font {
+  position: absolute;
+  top: 225px;
+  left: 805px;
+  font-size: 16px;
+  color: #6d6d6d;
+  font-weight: SemiBold;
+}
+.pricetag-size {
+  width: 135px;
+  color: rgba(70,70,70,1);
+  position: absolute;
+  top: 340px;
+  left: 1323px;
+  font-size: 35px;
+}
+.unit-txt {
+  width: 86px;
+  color: rgba(70,70,70,1);
+  position: absolute;
+  top: 354px;
+  left: 1458px;
+  font-weight: Medium;
+  font-size: 22px;
+}
+.entrega-box {
+  width: 291px;
+  height: 188px;
+  background: url("../images/entrega-box.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 589px;
+  left: 1357px;
+  overflow: hidden;
+}
+.despacho-box {
+  width: 291px;
+  height: 188px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border: 1px solid rgba(221,221,221,1);
+  border-radius: 7px;
+  overflow: hidden;
+}
+.envio-font {
+  width: 77px;
+  color: rgba(50,59,69,1);
+  position: absolute;
+  top: 126px;
+  left: 36px;
+  font-weight: Regular;
+  font-size: 16px;
+  text-align: center;
+}
+.retiro-font {
+  width: 78px;
+  color: rgba(50,59,69,1);
+  position: absolute;
+  top: 126px;
+  left: 168px;
+  font-weight: Regular;
+  font-size: 16px;
+  text-align: center;
+}
+.ubidespacho-container {
+  width: 206px;
+  height: 23px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 18px;
+  left: 38px;
+  overflow: hidden;
+}
+.ubidespacho-img {
+  top: 18px;
+  left: 37px;
+  position: absolute;
+}
+.ubidespacho-font {
+  position: absolute;
+  top: 20px;
+  left: 54px;
+}
+.iconodespacho {
+  width: 60px;
+  height: 60px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid #323B45;
+}
+
+.iconodespacho:hover {
+  background-color: rgba(158, 158, 158, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.despacho-img {
+  top: 58px;
+  left: 45px;
+  background-image: url("../images/domicilio-img.png");
+}
+
+.domicilio-img {
+  background-size: 70%;
+  background-position: center 40%;
+  top: 58px;
+  left: 177px;
+  background-image: url("../images/retiro-img.png");
+}
+
+.description-title {
+  width: 100%;
+  color: rgba(48,48,54,1);
+  position: absolute;
+  top: 336px;
+  left: 805px;
+  font-weight: Medium;
+  font-size: 23px;
+}
+.descripcion-box {
+  position: absolute;
+  top: 379px;
+  left: 805px;
+  width: 420px;
+  font-size: 17px;
+  font-family: 'Montserrat', sans-serif;
+  color: rgba(48, 48, 54, 1);
+}
+
+/* Texto limitado a 3 líneas */
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+
+/* Cuando se expande el texto */
+.description.expandido {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  -webkit-box-orient: initial;
+  overflow: visible;
+  display: block;
+}
+
+/* Estilo del enlace "Ver más" */
+#verMas {
+  display: inline-block;
+  margin-top: 5px;
+  color: #0066cc;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.caracteristicas-title {
+  width: 164px;
+  color: rgba(48,48,54,1);
+  position: absolute;
+  top: 600px;
+  left: 805px;
+  font-weight: Medium;
+  font-size: 23px;
+}
+.caracteristicas {
+  width: 420px;
+  color: rgba(48,48,54,1);
+  position: absolute;
+  top: 643px;
+  left: 805px;
+  font-weight: Medium;
+  font-size: 17px;
+}
+
+.product-quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-decrease, .btn-increase {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-decrease:hover, .btn-increase:hover {
+  background-color: #e0e0e0;
+}
+
+.quantity-number {
+  margin: 0 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Add to your product.css file */
+.quantity-counter {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 395px;
+  left: 1319px;
+}
+
+.counter-label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.counter-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.counter-btn {
+  width: 36px;
+  height: 36px;
+  background-color: #f8f9fa;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.counter-btn:hover {
+  background-color: #e9ecef;
+}
+
+.counter-input {
+  width: 50px;
+  height: 36px;
+  border: none;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Disable spinner buttons on input */
+.counter-input::-webkit-inner-spin-button, 
+.counter-input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

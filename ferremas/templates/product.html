@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+  {% load static %}
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/products.css' %}" rel="stylesheet" /> 
+  <link href="{% static 'css/product.css' %}" rel="stylesheet" /> 
+</head>
+<body>
+  <!-- Fondo -->
+  <div class="background"></div>
+
+  <div class="products-background"></div>
+  <div class="buy-window"></div>
+  <div class="bigproduct-img"></div>
+  <button class="shopbutton">Guardar</button>
+  <span class="main-font productname-font">Set de destornilladores y puntas 31 piezas</span>
+  <span class="main-font brandname-font">REDLINE</span>
+  <span class="producto-font pricetag-size">$ 9.090</span>
+  <span class="marca-font unit-txt">/unidad</span>
+
+  <!-- Contador de cantidad -->
+  <div class="quantity-counter">
+    <span class="main-font counter-label">Cantidad:</span>
+    <div class="counter-controls">
+      <button class="counter-btn minus-btn">-</button>
+      <input type="text" class="counter-input" value="1" readonly>
+      <button class="counter-btn plus-btn">+</button>
+    </div>
+  </div>
+
+  <div class="entrega-box">
+    <div class="despacho-box"></div>
+    <span class="main-font envio-font">Envío a domicilio</span>
+    <span class="main-font retiro-font">Retiro en un punto</span>
+    <div class="ubi-img ubidespacho-img"></div>
+    <span class="ubi-font ubidespacho-font">Ingresa tu ubicación (se supone que aqui va el mismo ubicacion del navbar)</span>
+    <div class="iconodespacho despacho-img"></div>
+    <div class="iconodespacho domicilio-img"></div>
+  </div>
+
+  <span class="main-font description-title">Descripción</span>
+  <div class="descripcion-box">
+    <p class="main-font description" id="desc">
+      El Set de destornilladores y puntas 31 piezas de Redline es la herramienta ideal para cualquier hogar. 
+      Con 31 piezas, este set te permitirá realizar una gran variedad de tareas de instalación y desinstalación, 
+      desde armar muebles hasta reparar electrodomésticos. Su diseño resistente y duradero te asegura que podrás usarlo 
+      por muchos años. ¡No te quedes sin el tuyo!
+    </p>
+    <a href="#" id="verMas" onclick="toggleDesc(event)">Ver más</a>
+  </div>
+  
+  <span class="main-font caracteristicas-title">Características</span>
+  <div class="caracteristicas-box">
+    <span class="main-font caracteristicas">
+      Este set de destornilladores y puntas está fabricado con componentes de metal y plástico, 
+      lo que le otorga una alta resistencia a la corrosión. 
+      Además, su diseño profesional te permite realizar trabajos con precisión y seguridad. 
+      Con una garantía de 100 años, este set te acompañará por mucho tiempo en tus proyectos.
+    </span>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Existing description code
+      const desc = document.getElementById('desc');
+      const verMas = document.getElementById('verMas');
+      
+      // Set a small timeout to ensure styles are applied
+      setTimeout(() => {
+        // Check if content is actually clamped (has overflow)
+        const isContentClamped = desc.scrollHeight > desc.clientHeight;
+        
+        // Only show the "Ver más" link if content is actually clamped
+        if (!isContentClamped) {
+          verMas.style.display = 'none';
+        } else {
+          verMas.style.display = 'inline-block';
+        }
+      }, 10);
+
+      // Quantity counter functionality
+      const minusBtn = document.querySelector('.minus-btn');
+      const plusBtn = document.querySelector('.plus-btn');
+      const counterInput = document.querySelector('.counter-input');
+      
+      // Minimum and maximum values
+      const minValue = 1;
+      const maxValue = 99;
+
+      // Event listener for minus button
+      minusBtn.addEventListener('click', () => {
+        let currentValue = parseInt(counterInput.value);
+        if (currentValue > minValue) {
+          counterInput.value = currentValue - 1;
+        }
+      });
+
+      // Event listener for plus button
+      plusBtn.addEventListener('click', () => {
+        let currentValue = parseInt(counterInput.value);
+        if (currentValue < maxValue) {
+          counterInput.value = currentValue + 1;
+        }
+      });
+    });
+
+    // Existing toggle description function
+    function toggleDesc(e) {
+      e.preventDefault();
+      const desc = document.getElementById('desc');
+      const link = document.getElementById('verMas');
+      desc.classList.toggle('expandido');
+      link.textContent = desc.classList.contains('expandido') ? 'Ver menos' : 'Ver más';
+    }
+  </script>
+</body>
+</html>

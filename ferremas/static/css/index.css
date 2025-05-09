@@ -4,7 +4,7 @@
   height: 259px;
   position: absolute;
   top: 619px;
-  left: 492px;
+  left: clamp(10%, 492px, 20%);
   overflow: visible;
 }
 
@@ -12,7 +12,7 @@
   width: 544px;
   position: absolute;
   top: 0;
-  left: 176px;
+  left: clamp(10%, 176px, 20%);
   color: #343e49;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
@@ -97,6 +97,12 @@
   height: 116px;
 }
 
+@media (max-width: 1440px) {
+  .buscados-container {
+    left: 20%;
+  }
+}
+
 /* === BANNER === */
 .banner {
   width: 100%;
@@ -104,6 +110,12 @@
   position: absolute;
   top: 70px; /* Reducido de 141px a 70px para acercar el banner al navbar */
   overflow: hidden;
+}
+
+@media (max-width: 1440px) {
+  .banner {
+    width: 1440px;
+  }
 }
 
 .bannerImg {
@@ -117,9 +129,11 @@
 }
 
 /* Texto del banner */
-.slogan1-txt, .slogan2-txt, .slogan3-txt {
+.slogan1-txt,
+.slogan2-txt,
+.slogan3-txt {
   position: absolute;
-  left: 1193px;
+  left: clamp(60%, 62vw, 1193px);
   color: #fff;
   font-family: Montserrat;
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.79);
@@ -128,37 +142,42 @@
 }
 
 .slogan1-txt {
-  width: 591px;
+  width: clamp(453px, 30vw, 591px);
   top: 30px;
   font-weight: 600;
-  font-size: 40px;
+  font-size: clamp(38.37px, 2.2vw, 40px);
 }
 
 .slogan2-txt {
-  width: 685px;
-  top: 85px;
+  width: clamp(525px, 36vw, 700px);
+  height: 244px;
+  top: 80px;
   font-weight: 800;
-  font-size: 50px;
+  font-size: clamp(55.23px, 3vw, 56px);
 }
 
 .slogan3-txt {
-  width: 683px;
-  top: 305px;
+  width: clamp(523px, 36vw, 698px);
+  height: 64px;
+  top: 320px;
   font-weight: 600;
-  font-size: 35px;
+  font-size: clamp(26px, 1.5vw, 26px); /* como el valor no cambia, también podés dejarlo fijo si querés */
 }
 
 /* Botón del banner */
 .btn-prod {
-  width: 274px;
+  width: clamp(210px, 14vw, 274px);
   height: 50px;
   background: rgba(0, 0, 0, 0.75);
   position: absolute;
   top: 360px;
-  left: 1548px;
+  left: clamp(80%, 80vw, 1548px);
   border-radius: 3px;
   cursor: pointer;
   transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-prod:hover {
@@ -166,20 +185,16 @@
 }
 
 .btn-prod-txt {
-  width: 241px;
-  position: absolute;
-  top: 372px;
-  left: 1564px;
   color: #fff;
   font-family: Montserrat;
   font-weight: 700;
-  font-size: 20px;
+  font-size: clamp(18px, 1.4vw, 20px);
   text-align: center;
   pointer-events: none;
   transition: transform 0.3s ease;
 }
 
-.btn-prod:hover + .btn-prod-txt {
+.btn-prod:hover .btn-prod-txt {
   transform: scale(1.05);
 }
 

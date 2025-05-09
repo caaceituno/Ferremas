@@ -82,3 +82,8 @@ def products(request):
     # Aquí deberías implementar la lógica para mostrar los productos
     # Por simplicidad, solo mostramos un mensaje
     return render(request, 'products.html')
+
+def product(request):
+    # Aquí deberías implementar la lógica para mostrar los productos
+    # Por simplicidad, solo mostramos un mensaje
+    return render(request, 'product.html')
