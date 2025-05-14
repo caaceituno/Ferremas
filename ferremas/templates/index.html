@@ -1,27 +1,86 @@
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferremas</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/index.css' %}" rel="stylesheet" /> 
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+    
+    <script type="text/javascript">
+		var user = '{{request.user}}'
+        function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+    </script>
+
 </head>
 <body>
     <div class="background">
 
-        <!-- Logo -->
-        <div class="logo-container">
-            <span class="logo-font">FERREMAS</span>
-            <div class="logo"></div>
-        </div>
+
+        <!-- Barra superior -->        
+        <section class="upbar-container">
+            <!-- Lado izquierdo: logo -->
+            <a href="/">
+                <div class="logo-container">
+                  <span class="logo-font">FERREMAS</span>
+                  <div class="logo"></div>
+                </div>
+              </a>
+              
+          
+            <!-- Lado derecho: sesión, compras, carrito -->
+            <div class="upbar-right">
+              {% if user.is_authenticated %}
+              <div class="user-dropdown">
+                <span class="inicio-font">Hola,<br>{{ user.username }}</span>
+                <div class="dropdown-content">
+                  <a href="{% url 'logout' %}">Cerrar sesión</a>
+                </div>
+              </div>
+              {% else %}
+              <a href="{% url 'login' %}" class="login-link">
+                <span class="inicio-font">Hola,<br>Inicia sesión</span>
+              </a>
+              {% endif %}
+          
+              <div class="separador1"></div>
+              <span class="compras-font">Mis Compras</span>
+              <div class="separador2"></div>
+              <a href="/cart">
+                <div class="carro-img"></div>
+              </a>
+              <p id="cart-total">{{cartItems}}</p>
+              
+            </div>
+          </section>
+          
+          {% block content %}
 
         <!-- Categorías -->
-        <div class="categorias-container">
+        <nav class="categorias-container">
             <div class="categorias-box"></div>
             <span class="categorias-menu-font">Categorías</span>
             <div class="arrow-img"></div>
-
             <div class="categorias-dropdown">
                 <a href="#">Herramientas Manuales</a>
                 <a href="#">Materiales Básicos</a>
@@ -31,70 +90,47 @@
                 <a href="#">Fijaciones y Adhesivos</a>
                 <a href="#">Equipos de Medición</a>
             </div>
-        </div>
+        </nav>
 
         <!-- Barra de búsqueda -->
-        <div class="search-bar-container">
+        <section class="search-bar-container">
             <div class="search-bar">
                 <input type="text" class="search-bar-input" placeholder="Buscar...">
                 <div class="search-bar-button">
                     <div class="search-bar-icon"></div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Barra superior -->
-        <div class="upbar-container">
-            {% if user.is_authenticated %}
-                <div class="user-dropdown">
-                    <span class="inicio-font">Hola,<br>{{ user.first_name }}</span>
-                    <div class="dropdown-content">
-                        <a href="{% url 'logout' %}">Cerrar sesión</a>
-                    </div>
-                </div>
-            {% else %}
-                <a href="{% url 'login' %}" style="text-decoration: none;">
-                    <span class="inicio-font">Hola,<br>Inicia sesión</span>
-                </a>
-            {% endif %}
-            <div class="separador1"></div>
-            <span class="compras-font">Mis Compras</span>
-            <div class="separador2"></div>
-            <div class="carro-img"></div>
-        </div>
 
-        <!-- Ubicación -->
-        <div class="ubi-container">
-            <div class="ubi-img"></div>
-            <span class="ubi-font">Ingresa tu ubicación</span>
-        </div>
+ 
+        
 
         <!-- Banner -->
-        <div class="banner">
+        <section class="banner">
             <div class="banner-container">
                 <div class="bannerImg"></div>
             </div>
-            
-            <a href="{% url 'products' %}" style="text-decoration: none; display: block; position: relative;">
-                <div class="btn-prod"></div>
-                <span class="btn-prod-txt">¡Ver Productos!</span>
+            <a href="{% url 'products' %}" class="btn-prod-link">
+                <div class="btn-prod">¡Ver Productos!</div>
             </a>
-            
+              
             <div class="slogans">
                 <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
                 <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos</span>
                 <span class="slogan1-txt">A TU SERVICIO</span>
             </div>
-        </div>
+        </section>
 
         <!-- WhatsApp -->
-        <div class="wsp-container">
+        <section class="wsp-container">
             <span class="wsp-font">¿Necesitas ayuda? ¡Escríbenos!</span>
             <div class="wsp-img"></div>
-        </div>
+        </section>
 
         <!-- Categorías más buscadas -->
-        <div class="buscados-container">
+        <section class="buscados-container">
+            <span class="categorias-font">Categorías más buscadas</span>
             <div class="categoria">
                 <span class="manuales-font">Herramientas Manuales</span>
                 <div class="manuales-img"></div>
@@ -115,9 +151,17 @@
                 <span class="seguridad-font">Equipos de Seguridad</span>
                 <div class="seguridad-img"></div>
             </div>
-            <span class="categorias-font">Categorías más buscadas</span>
-        </div>
+            
+        </section>
+        {% endblock %}
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 </body>
 </html>
