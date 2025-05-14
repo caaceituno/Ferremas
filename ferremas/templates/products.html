@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Compra Ferremas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     {% load static %}
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
     <link href="{% static 'css/products.css' %}" rel="stylesheet" /> 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
         <!-- Navbar -->
@@ -143,11 +143,21 @@
     <div class="orden-container">
         <div class="orden-separador"></div>
         <span class="orden1-font">Ordenar por:</span>
-        <span class="orden2-font">Precio de menor a mayor</span>
-        <!-- falta agregar secciones
-        - precio mayor a menor
-        - marca -->
-        <div class="orden-arrow"></div>
+    </div>
+        <div class="dropdown">
+    <button class="btn btn-order dropdown-toggle" 
+            type="button"
+            id="dropdownMenuButton"
+            data-bs-toggle="dropdown"
+            data-bs-auto-close="outside"
+            aria-expanded="false">
+        Precio de menor a mayor
+    </button>
+    <div class="dropdown-menu dropdown-order" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item dropdownorder-item" href="#">Precio de menor a mayor</a>
+        <a class="dropdown-item dropdownorder-item" href="#">Precio mayor a menor</a>
+        <a class="dropdown-item dropdownorder-item" href="#">Marca</a>
+    </div>
     </div>
     <span class="seccion-font">Inicio > (Seccion de compra)</span>
     <div class="barrainferior"></div>
@@ -213,5 +223,6 @@
         <div class="producto-img"></div>
         <div class="producto-separador"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
