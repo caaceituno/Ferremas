@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras | Ferremas</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cart.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-white navbar-shadow sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Primera fila del navbar -->
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo con enlace a página principal -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="{% url 'index' %}" class="flex items-center">
+                        <img class="h-10 w-auto" src="{% static 'images/logo.png' %}" alt="Logo Ferremas">
+                        <span class="ml-2 text-xl font-bold text-red-700">FERREMAS</span>
+                    </a>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="flex-1 flex justify-center px-4">
+                    <div class="w-full max-w-2xl relative flex">
+                        <!-- Dropdown de categorías -->
+                        <div class="categories-dropdown relative">
+                            <button class="dropdown-trigger bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-l-md flex items-center h-full">
+                                <i class="fas fa-bars mr-2"></i>
+                                <span>Categorías</span>
+                            </button>
+                            <div class="categories-menu dropdown-content">
+                                <div class="py-1">
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-tools mr-2 text-gray-500"></i> Herramientas Manuales
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-boxes mr-2 text-gray-500"></i> Materiales Básicos
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-hard-hat mr-2 text-gray-500"></i> Equipos de Seguridad
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-bolt mr-2 text-gray-500"></i> Herramientas Eléctricas
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-screwdriver mr-2 text-gray-500"></i> Tornillos y Anclajes
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-glue mr-2 text-gray-500"></i> Fijaciones y Adhesivos
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-ruler-combined mr-2 text-gray-500"></i> Equipos de Medición
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Input de búsqueda -->
+                        <input type="text" placeholder="Buscar herramientas, materiales..." 
+                               class="search-input px-4 py-2 w-full border-t border-b border-gray-300 focus:outline-none focus:border-red-300">
+                        
+                        <!-- Botón de búsqueda -->
+                        <button class="bg-gray-800 hover:bg-red-700 text-white px-4 py-2 rounded-r-md">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menú de usuario y carrito -->
+                <div class="flex items-center">
+                    <!-- Ubicación -->
+                    <div class="hidden md:flex items-center mr-6">
+                        <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                    </div>
+                    
+                    <!-- Usuario con enlaces a login y registro -->
+                    <div class="user-dropdown ml-4">
+                        <div class="dropdown-area">
+                            <button class="dropdown-trigger flex items-center text-gray-700 hover:text-red-700">
+                                <i class="fas fa-user-circle text-2xl"></i>
+                                <span class="ml-2 hidden md:inline-block">
+                                    {% if user.is_authenticated %}
+                                        <span class="block font-medium">Hola, {{ user.first_name }}</span>
+                                    {% else %}
+                                        <span class="block font-medium">Hola, inicia sesión</span>
+                                    {% endif %}
+                                </span>
+                            </button>
+                            <div class="user-menu dropdown-content">
+                                <div class="user-menu-container">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'logout' %}" class="user-menu-item">
+                                            <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Cerrar sesión
+                                        </a>
+                                    {% else %}                                    
+                                    <a href="{% url 'login' %}" class="user-menu-item">
+                                        <i class="fas fa-sign-in-alt mr-2 text-gray-500"></i> Iniciar sesión
+                                    </a>
+                                    <a href="{% url 'register' %}" class="user-menu-item">
+                                        <i class="fas fa-user-plus mr-2 text-gray-500"></i> Registrarse
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carrito con enlace a productos -->
+                    <div class="ml-4 relative">
+                        <a href="{% url 'products' %}" class="flex items-center text-gray-700 hover:text-red-700">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segunda fila del navbar (ubicación móvil) -->
+            <div class="md:hidden py-2 border-t border-gray-200">
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-button bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+        <i class="fab fa-whatsapp text-2xl mr-2"></i>
+        <span>¿Necesitas ayuda? ¡Escríbenos!</span>
+    </a>
+
+    <!-- Contenido principal del carrito -->
+    <div class="background v2189_824">
+        <!-- Checkout steps indicators -->
+        <div class="indicator-line"></div>
+        <div class="circle-number cn1">1</div> 
+        <div class="circle-number cn2">2</div>
+        <div class="circle-number cn3">3</div>
+        <span class="main-font carro-step">Carro</span>
+        <span class="main-font entrega-step">Entrega</span>
+        <span class="main-font pago-step">Pago</span>
+        
+        <!-- Contenedores principales -->
+        <div class="products-box"></div>
+        <div class="resumen-box"></div>
+        <div class="products-line"></div>
+        
+        <!-- Título del carrito -->
+        <span class="main-font carro-title">Carro -cantidad- productos</span>
+        
+        <!-- Seleccionar todos -->
+        <div class="form-check" id="select-all">
+            <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+            <label class="form-check-label" for="check-all">
+                Seleccionar todos
+            </label>
+        </div>
+        
+        <!-- Producto en el carrito -->
+        <div class="product-container">
+            <div class="form-check" id="select-product">
+                <input class="form-check-input" type="checkbox" value="" id="checkChecked" checked>
+                <label class="form-check-label" for="check-product"></label>
+            </div>
+            <div class="product-img"></div>
+            <span class="main-font productname-txt">Set de destornilladores y puntas 31 piezas</span>
+            <span class="main-font precioproducto-txt">$ 9.090</span>
+            
+            <!-- Contador de cantidad -->
+            <div class="quantity-counter">
+                <span class="main-font counter-label">Cantidad:</span>
+                <div class="counter-controls">
+                    <button class="counter-btn minus-btn">-</button>
+                    <input type="text" class="counter-input" value="1" readonly>
+                    <button class="counter-btn plus-btn">+</button>
+                </div>
+            </div>
+            
+            <!-- Dropdown para eliminar -->
+            <div class="dropdown dropdown-delete">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-list"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Eliminar de carro</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Resumen de compra -->
+        <div class="resumen-container">
+            <span class="main-font resumen-txt">Resumen de la compra</span>
+            <span class="main-font productosresumen-txt">Productos -cantidad productos-</span>
+            <span class="main-font precio-cantidad">$ 9.090</span>
+            <span class="main-font descuento-txt">Descuentos</span>
+            <span class="main-font descuentos-total">$ 0</span>
+            <div class="line"></div>
+            <div class="line resumen-line2"></div>
+            <span class="main-font total-txt">Total:</span>
+            <span class="main-font precio-total">$ 9.090</span>
+            <button class="continuar-box">Continuar compra</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // Description clamping
+        const desc = document.getElementById('desc');
+        const verMas = document.getElementById('verMas');
+
+        if (desc && verMas) {
+            setTimeout(() => {
+                const isContentClamped = desc.scrollHeight > desc.clientHeight;
+                verMas.style.display = isContentClamped ? 'inline-block' : 'none';
+            }, 10);
+        }
+
+        // Quantity counter functionality
+        const minusBtn = document.querySelector('.minus-btn');
+        const plusBtn = document.querySelector('.plus-btn');
+        const counterInput = document.querySelector('.counter-input');
+
+        const minValue = 1;
+        const maxValue = 99;
+
+        if (minusBtn && plusBtn && counterInput) {
+            minusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(counterInput.value) || minValue;
+                if (currentValue > minValue) {
+                    counterInput.value = currentValue - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(counterInput.value) || minValue;
+                if (currentValue < maxValue) {
+                    counterInput.value = currentValue + 1;
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>

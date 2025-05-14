@@ -332,3 +332,8 @@
   -webkit-appearance: none; 
   margin: 0; 
 }
+
+.seccion-font{
+  width: 900px;
+  top: 110px;
+}

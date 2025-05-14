@@ -87,3 +87,8 @@ def product(request):
     # Aquí deberías implementar la lógica para mostrar los productos
     # Por simplicidad, solo mostramos un mensaje
     return render(request, 'product.html')
+
+def cart(request):
+    # Aquí deberías implementar la lógica para mostrar los productos
+    # Por simplicidad, solo mostramos un mensaje
+    return render(request, 'cart.html')

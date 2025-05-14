@@ -9,4 +9,5 @@ urlpatterns = [
     path('recover/', views.recover, name='recover'),
     path('products/', views.products, name='products'),
     path('product/', views.product, name='product'),
+    path('cart/', views.cart, name='cart'),
 ]
