@@ -9,77 +9,134 @@
     {% load static %}
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
     <link href="{% static 'css/products.css' %}" rel="stylesheet" /> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+        <!-- Navbar -->
+    <nav class="bg-white navbar-shadow sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Primera fila del navbar -->
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo con enlace a página principal -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="{% url 'index' %}" class="flex items-center">
+                        <img class="h-10 w-auto" src="{% static 'images/logo.png' %}" alt="Logo Ferremas">
+                        <span class="ml-2 text-xl font-bold text-red-700">FERREMAS</span>
+                    </a>
+                </div>
 
-    <!-- Fondo -->
-    <div class="background"></div>
+                <!-- Barra de búsqueda -->
+                <div class="flex-1 flex justify-center px-4">
+                    <div class="w-full max-w-2xl relative flex">
+                        <!-- Dropdown de categorías -->
+                        <div class="categories-dropdown relative">
+                            <button class="dropdown-trigger bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-l-md flex items-center h-full">
+                                <i class="fas fa-bars mr-2"></i>
+                                <span>Categorías</span>
+                            </button>
+                            <div class="categories-menu dropdown-content">
+                                <div class="py-1">
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-tools mr-2 text-gray-500"></i> Herramientas Manuales
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-boxes mr-2 text-gray-500"></i> Materiales Básicos
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-hard-hat mr-2 text-gray-500"></i> Equipos de Seguridad
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-bolt mr-2 text-gray-500"></i> Herramientas Eléctricas
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-screwdriver mr-2 text-gray-500"></i> Tornillos y Anclajes
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-glue mr-2 text-gray-500"></i> Fijaciones y Adhesivos
+                                    </a>
+                                    <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                        <i class="fas fa-ruler-combined mr-2 text-gray-500"></i> Equipos de Medición
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Input de búsqueda -->
+                        <input type="text" placeholder="Buscar herramientas, materiales..." 
+                               class="search-input px-4 py-2 w-full border-t border-b border-gray-300 focus:outline-none focus:border-red-300">
+                        
+                        <!-- Botón de búsqueda -->
+                        <button class="bg-gray-800 hover:bg-red-700 text-white px-4 py-2 rounded-r-md">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
 
-    <!-- Logo con enlace a la página principal -->
-    <div class="logo-container">
-        <a href="{% url 'index' %}" style="text-decoration: none;">
-            <span class="logo-font">FERREMAS</span>
-            <div class="logo"></div>
-        </a>
-    </div>
-
-    <!-- Categorías -->
-    <div class="categorias-container">
-        <div class="categorias-box"></div>
-        <span class="categorias-menu-font">Categorías</span>
-        <div class="arrow-img"></div>
-        <div class="categorias-dropdown">
-            <a href="#">Herramientas Manuales</a>
-            <a href="#">Materiales Básicos</a>
-            <a href="#">Equipos de Seguridad</a>
-            <a href="#">Herramientas Eléctricas</a>
-            <a href="#">Tornillos y Anclajes</a>
-            <a href="#">Fijaciones y Adhesivos</a>
-            <a href="#">Equipos de Medición</a>
-        </div>
-    </div>
-
-    <!-- Barra de búsqueda -->
-    <div class="search-bar-container">
-        <div class="search-bar">
-            <input type="text" class="search-bar-input" placeholder="Buscar..." />
-            <div class="search-bar-button">
-                <div class="search-bar-icon"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Opciones superiores con lógica para mostrar el nombre del usuario si está autenticado -->
-    <div class="upbar-container">
-        {% if user.is_authenticated %}
-            <div class="user-dropdown">
-                <span class="inicio-font">Hola,<br>{{ user.first_name }}</span>
-                <div class="dropdown-content">
-                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                <!-- Menú de usuario y carrito -->
+                <div class="flex items-center">
+                    <!-- Ubicación -->
+                    <div class="hidden md:flex items-center mr-6">
+                        <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                    </div>
+                    
+                    <!-- Usuario con enlaces a login y registro -->
+                    <div class="user-dropdown ml-4">
+                        <div class="dropdown-area">
+                            <button class="dropdown-trigger flex items-center text-gray-700 hover:text-red-700">
+                                <i class="fas fa-user-circle text-2xl"></i>
+                                <span class="ml-2 hidden md:inline-block">
+                                    {% if user.is_authenticated %}
+                                        <span class="block font-medium">Hola, {{ user.first_name }}</span>
+                                    {% else %}
+                                        <span class="block font-medium">Hola, inicia sesión</span>
+                                    {% endif %}
+                                </span>
+                            </button>
+                            <div class="user-menu dropdown-content">
+                                <div class="user-menu-container">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'logout' %}" class="user-menu-item">
+                                            <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Cerrar sesión
+                                        </a>
+                                    {% else %}                                    
+                                    <a href="{% url 'login' %}" class="user-menu-item">
+                                        <i class="fas fa-sign-in-alt mr-2 text-gray-500"></i> Iniciar sesión
+                                    </a>
+                                    <a href="{% url 'register' %}" class="user-menu-item">
+                                        <i class="fas fa-user-plus mr-2 text-gray-500"></i> Registrarse
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carrito con enlace a productos -->
+                    <div class="ml-4 relative">
+                        <a href="{% url 'products' %}" class="flex items-center text-gray-700 hover:text-red-700">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        {% else %}
-            <a href="{% url 'login' %}" style="text-decoration: none;">
-                <span class="inicio-font">Hola,<br>Inicia sesión</span>
-            </a>
-        {% endif %}
-        <div class="separador1"></div>
-        <span class="compras-font">Mis Compras</span>
-        <div class="separador2"></div>
-        <div class="carro-img"></div>
-    </div>
 
-    <!-- Ubicación -->
-    <div class="ubi-container">
-        <div class="ubi-img"></div>
-        <span class="ubi-font">Ingresa tu ubicación</span>
-    </div>
+            <!-- Segunda fila del navbar (ubicación móvil) -->
+            <div class="md:hidden py-2 border-t border-gray-200">
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                    <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <!-- WhatsApp -->
-    <div class="wsp-container">
-        <span class="wsp-font">¿Necesitas ayuda? ¡Escríbenos!</span>
-        <div class="wsp-img"></div>
-    </div>
+    <!-- Botón de WhatsApp flotante -->
+    <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-button bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+        <i class="fab fa-whatsapp text-2xl mr-2"></i>
+        <span>¿Necesitas ayuda? ¡Escríbenos!</span>
+    </a>
 
     <div class="products-background"></div>
     <div class="seccionsuperior"></div>
@@ -149,8 +206,7 @@
 
     <div class="product_test-container">
         <div class="product-box"></div>
-        <div class="add-box"></div>
-        <span class="add-font">Agregar al carro</span>
+        <button class="add-box">Agregar al carro</button>
         <span class="pricetag-font">$ 9.090</span>
         <span class="producto-font">Set de destornilladores y puntas 31 piezas</span>
         <span class="marca-font">REDLINE</span>

@@ -4,8 +4,6 @@
   background-image: linear-gradient(0deg, #fdfbfb 0%, #cfd0d1 100%);
   opacity: 1;
   position: absolute;
-  top: 142px;
-  left: 0px;
   overflow: hidden;
 }
 .seccionsuperior {
@@ -14,7 +12,7 @@
   background: rgba(255,255,255,1);
   opacity: 1;
   position: absolute;
-  top: 201px;
+  top: 128px;
   left: 94px;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
@@ -44,7 +42,7 @@
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 229px;
+  top: 156px;
   left: 129px;
   overflow: hidden;
 }
@@ -96,7 +94,7 @@
   width: 277px;
   color: rgba(52,62,73,1);
   position: absolute;
-  top: 163px;
+  top: 80px;
   left: 14px;
   font-family: Montserrat;
   font-weight: Regular;
@@ -119,7 +117,7 @@
 /* Contenedor de la paginación */
 .paginationup-container {
   position: absolute; 
-  top: 239px;
+  top: 166px;
   left: 1563px;
   transform: translateX(-50%);
   width: 100%;
@@ -196,7 +194,7 @@
   background: rgba(255,255,255,1);
   opacity: 1;
   position: absolute;
-  top: 345px;
+  top: 272px;
   left: 94px;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
@@ -210,31 +208,33 @@
   background: rgba(3,106,188,1);
   opacity: 1;
   position: absolute;
-  top: 732px;
+  top: 659px;
   left: 113px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   overflow: hidden;
-}
-.add-font {
-  width: 136px;
+  border: none;
   color: rgba(255,255,255,1);
-  position: absolute;
-  top: 745px;
-  left: 164px;
   font-family: Montserrat;
   font-weight: Bold;
   font-size: 16px;
-  opacity: 1;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-box:hover {
+  background: rgba(2, 85, 150, 1);
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 .pricetag-font {
   width: 66px;
   color: rgba(105,105,105,1);
   position: absolute;
-  top: 698px;
+  top: 625px;
   left: 105px;
   font-family: Montserrat;
   font-weight: Medium;
@@ -246,7 +246,7 @@
   width: 201px;
   color: rgba(70,70,73,1);
   position: absolute;
-  top: 655px;
+  top: 582px;
   left: 105px;
   font-family: Montserrat;
   font-weight: Bold;
@@ -258,7 +258,7 @@
   width: 265px;
   color: rgba(109,109,109,1);
   position: absolute;
-  top: 634px;
+  top: 561px;
   left: 105px;
   font-family: Montserrat;
   font-weight: SemiBold;
@@ -275,7 +275,7 @@
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 345px;
+  top: 272px;
   left: 94px;
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
@@ -285,7 +285,7 @@
   width: 276px;
   opacity: 1;
   position: absolute;
-  top: 621px;
+  top: 548px;
   left: 94px;
   border: 1px solid #dddddddd;
 }

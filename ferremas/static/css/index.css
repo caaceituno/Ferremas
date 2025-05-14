@@ -4,7 +4,7 @@
   height: 259px;
   position: absolute;
   top: 619px;
-  left: clamp(10%, 492px, 20%);
+  left: 600px;
   overflow: visible;
 }
 
@@ -96,13 +96,11 @@
   width: 116px;
   height: 116px;
 }
-
 @media (max-width: 1440px) {
   .buscados-container {
-    left: 20%;
+    left: 492px;
   }
 }
-
 /* === BANNER === */
 .banner {
   width: 100%;
