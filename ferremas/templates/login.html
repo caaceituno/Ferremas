@@ -2,67 +2,155 @@
 <html lang="es">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
     {% load static %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/login.css' %}" rel="stylesheet" /> 
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Montserrat, sans-serif;
+        }
+
+        .iniciosesion-container {
+            background: url("{% static 'images/loginbackground.jpg' %}") center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recuadroinicio {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 420px;
+            box-sizing: border-box;
+        }
+
+        .logoinicio-font {
+            font-size: 20px;
+            font-weight: bold;
+            color: rgb(191, 26, 44);
+            text-align: center;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .logoinicio {
+            background-image: url("{% static 'images/logo.png' %}");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px auto;
+        }
+
+        .iniciosesion-font {
+            font-size: 22px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .separadorcuadro {
+            border-top: 1px solid rgb(52, 62, 73);
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid rgb(52, 62, 73);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button[type="submit"] {
+            padding: 10px;
+            background-color: rgb(52, 62, 73);
+            color: white;
+            font-weight: 500;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: rgb(230, 38, 38);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .creacion-font,
+        .recuperacion-font {
+            font-size: 13px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .recuperacion-font a {
+            color: rgb(230, 38, 38);
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <div class="iniciosesion-container">
-        <!-- Fondo y recuadro de inicio de sesión -->
-        <div class="iniciobackground"></div>
-        <div class="recuadroinicio"></div>
+        <div class="recuadroinicio">
+            <!-- Logo -->
+            <a href="{% url 'index' %}" style="text-decoration: none;">
+                <div class="logoinicio"></div>
+                <span class="logoinicio-font">FERREMAS</span>
+            </a>
 
-        <form method="POST" action="{% url 'login' %}">
-            {% csrf_token %}
+            <span class="iniciosesion-font">Inicia sesión para comprar</span>
+            <div class="separadorcuadro"></div>
 
-            <!-- Campos de entrada de correo y contraseña -->
-            <div class="recuadrocorreo">
-                <input type="email" name="email" placeholder="Ingresa tu correo electrónico" 
-                    style="width: 100%; height: 100%; border: none; outline: none; padding: 10px; font-family: Montserrat;" required />
+            <!-- Formulario -->
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" required />
+
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" required />
+
+                <button type="submit">Ingresar</button>
+
+                {% if messages %}
+                    <div class="error-message">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </form>
+
+            <div class="creacion-font">
+                <a href="{% url 'register' %}">Crear cuenta</a>
             </div>
-            <span class="mail-font">Correo electrónico</span>
 
-            <div class="recuadropass">
-                <input type="password" name="password" placeholder="Ingresa tu contraseña" 
-                    style="width: 100%; height: 100%; border: none; outline: none; padding: 10px; font-family: Montserrat;" required />
+            <div class="recuperacion-font">
+                ¿No puedes ingresar a tu cuenta?
+                <a href="{% url 'recover' %}">Recupera el acceso</a>
             </div>
-            <span class="pass-font">Contraseña</span>
-
-            <!-- Botón de ingreso -->
-            <button type="submit" style="position: absolute; top: 549px; left: 773px; width: 334px; height: 37px; background: rgb(52, 62, 73); border: none; border-radius: 3px; cursor: pointer;">
-                <span style="color: #fff; font-family: Montserrat; font-size: 13px; font-weight: 500;">Ingresar</span>
-            </button>
-            
-            <!-- Mostrar mensajes de error si existen -->
-            {% if messages %}
-                <div class="error-message">
-                    {% for message in messages %}
-                        {{ message }}
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </form>
-
-        <!-- Recuperación de cuenta -->
-        <span class="recuperacion-font">
-            ¿No puedes ingresar a tu cuenta? <a href="{% url 'recover' %}"><span style="color: rgb(230, 38, 38);" >Recupera el acceso</span></a>
-        </span>
-
-        <!-- Creación de cuenta -->
-        <a href="{% url 'register' %}" style="text-decoration: none;">
-            <span class="creacion-font">Crear cuenta</span>
-        </a>
-
-        <!-- Información adicional -->
-        <span class="iniciosesion-font">Inicia sesión para comprar</span>
-        <div class="separadorcuadro"></div>
-
-        <!-- Logo -->
-        <a href="{% url 'index' %}" style="text-decoration: none;">
-            <span class="logoinicio-font">FERREMAS</span>
-            <div class="logoinicio"></div>
-        </a>
+        </div>
     </div>
 </body>
 </html>

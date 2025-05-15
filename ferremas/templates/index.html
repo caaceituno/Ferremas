@@ -1,123 +1,226 @@
+
 <!DOCTYPE html>
-<html>
+{% load static %}
+<html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferremas</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/index.css' %}" rel="stylesheet" /> 
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="text/javascript">
+		var user = '{{request.user}}'
+        function getToken(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+    </script>
+
 </head>
 <body>
     <div class="background">
 
-        <!-- Logo -->
-        <div class="logo-container">
-            <span class="logo-font">FERREMAS</span>
-            <div class="logo"></div>
-        </div>
 
-        <!-- Categorías -->
-        <div class="categorias-container">
-            <div class="categorias-box"></div>
-            <span class="categorias-menu-font">Categorías</span>
-            <div class="arrow-img"></div>
-
-            <div class="categorias-dropdown">
-                <a href="#">Herramientas Manuales</a>
-                <a href="#">Materiales Básicos</a>
-                <a href="#">Equipos de Seguridad</a>
-                <a href="#">Herramientas Eléctricas</a>
-                <a href="#">Tornillos y Anclajes</a>
-                <a href="#">Fijaciones y Adhesivos</a>
-                <a href="#">Equipos de Medición</a>
-            </div>
-        </div>
-
-        <!-- Barra de búsqueda -->
-        <div class="search-bar-container">
-            <div class="search-bar">
-                <input type="text" class="search-bar-input" placeholder="Buscar...">
-                <div class="search-bar-button">
-                    <div class="search-bar-icon"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Barra superior -->
-        <div class="upbar-container">
-            {% if user.is_authenticated %}
-                <div class="user-dropdown">
-                    <span class="inicio-font">Hola,<br>{{ user.first_name }}</span>
-                    <div class="dropdown-content">
-                        <a href="{% url 'logout' %}">Cerrar sesión</a>
+        <nav class="bg-white navbar-shadow sticky top-0 z-50 w-full">
+            <div class="max-w-7xl mx-auto px-4">
+                <!-- Primera fila del navbar -->
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo con enlace a página principal -->
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="{% url 'index' %}" class="flex items-center">
+                            <img class="h-10 w-auto" src="{% static 'images/logo.png' %}" alt="Logo Ferremas">
+                            <span class="ml-2 text-xl font-bold text-red-700">FERREMAS</span>
+                        </a>
+                    </div>
+    
+                    <!-- Barra de búsqueda -->
+                    <div class="flex-1 flex justify-center px-4">
+                        <div class="w-full max-w-2xl relative flex">
+                            <!-- Dropdown de categorías -->
+                            <div class="categories-dropdown relative">
+                                <button class="dropdown-trigger bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-l-md flex items-center h-full">
+                                    <i class="fas fa-bars mr-2"></i>
+                                    <span>Categorías</span>
+                                </button>
+                                <div class="categories-menu dropdown-content">
+                                    <div class="py-1">
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-tools mr-2 text-gray-500"></i> Herramientas Manuales
+                                        </a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-boxes mr-2 text-gray-500"></i> Materiales Básicos
+                                        </a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-hard-hat mr-2 text-gray-500"></i> Equipos de Seguridad
+                                        </a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-bolt mr-2 text-gray-500"></i> Herramientas Eléctricas
+                                        </a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-screwdriver mr-2 text-gray-500"></i> Tornillos y Anclajes
+                                        </a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-glue mr-2 text-gray-500"></i> Fijaciones y Adhesivos
+                                        </a>
+                                        <a href="#" class="block px-4 py-2 text-gray-800 hover:text-red-700 category-item">
+                                            <i class="fas fa-ruler-combined mr-2 text-gray-500"></i> Equipos de Medición
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Input de búsqueda -->
+                            <input type="text" placeholder="Buscar herramientas, materiales..." 
+                                   class="search-input px-4 py-2 w-full border-t border-b border-gray-300 focus:outline-none focus:border-red-300">
+                            
+                            <!-- Botón de búsqueda -->
+                            <button class="bg-gray-800 hover:bg-red-700 text-white px-4 py-2 rounded-r-md">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <!-- Menú de usuario y carrito -->
+                    <div class="flex items-center">
+                        <!-- Ubicación -->
+                        <div class="block md:flex items-center mr-6">
+                            <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                            <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                        </div>
+                        
+                        <!-- Usuario con enlaces a login y registro -->
+                        <div class="user-dropdown ml-4">
+                            <div class="dropdown-area">
+                                <button class="dropdown-trigger flex items-center text-gray-700 hover:text-red-700">
+                                    <i class="fas fa-user-circle text-2xl"></i>
+                                    <span class="ml-2 inline-block text-left">
+                                        {% if user.is_authenticated %}
+                                            <span class="block font-medium">Hola, {{ user.username }}</span>
+                                        {% else %}
+                                            <span class="block font-medium">Hola, Inicia sesión</span>
+                                        {% endif %}
+                                    </span>
+                                </button>
+                                <div class="user-menu dropdown-content">
+                                    <div class="user-menu-container">
+                                        {% if user.is_authenticated %}
+                                            <a href="{% url 'logout' %}" class="user-menu-item">
+                                                <i class="fas fa-sign-out-alt mr-2 text-gray-500"></i> Cerrar sesión
+                                            </a>
+                                        {% else %}                                    
+                                        <a href="{% url 'login' %}" class="user-menu-item">
+                                            <i class="fas fa-sign-in-alt mr-2 text-gray-500"></i> Iniciar sesión
+                                        </a>
+                                        <a href="{% url 'register' %}" class="user-menu-item">
+                                            <i class="fas fa-user-plus mr-2 text-gray-500"></i> Registrarse
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Carrito con enlace a productos -->
+                        <div class="ml-4 relative">
+                            <a href="/cart" class="flex items-center text-gray-700 hover:text-red-700">
+                                <i class="fas fa-shopping-cart text-2xl"></i>
+                                <p id="cart-total">{{cartItems}}</p>
+                            </a>
+                            
+                        </div>
                     </div>
                 </div>
-            {% else %}
-                <a href="{% url 'login' %}" style="text-decoration: none;">
-                    <span class="inicio-font">Hola,<br>Inicia sesión</span>
-                </a>
-            {% endif %}
-            <div class="separador1"></div>
-            <span class="compras-font">Mis Compras</span>
-            <div class="separador2"></div>
-            <div class="carro-img"></div>
-        </div>
+    
+                <!-- Segunda fila del navbar (ubicación móvil) -->
+                <div class="md:hidden py-2 border-t border-gray-200">
+                    <div class="flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                        <span class="text-sm font-medium text-gray-700">Ingresa tu ubicación</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Botón de WhatsApp flotante -->
+        <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-button bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+            <i class="fab fa-whatsapp text-2xl mr-2"></i>
+            <span>¿Necesitas ayuda? ¡Escríbenos!</span>
+        </a>
 
-        <!-- Ubicación -->
-        <div class="ubi-container">
-            <div class="ubi-img"></div>
-            <span class="ubi-font">Ingresa tu ubicación</span>
-        </div>
+        {% block content %}
+
 
         <!-- Banner -->
-        <div class="banner">
+        <section class="banner">
             <div class="banner-container">
                 <div class="bannerImg"></div>
             </div>
-            
-            <a href="{% url 'products' %}" style="text-decoration: none; display: block; position: relative;">
-                <div class="btn-prod"></div>
-                <span class="btn-prod-txt">¡Ver Productos!</span>
+            <a href="{% url 'products' %}" class="btn-prod-link">
+                <div class="btn-prod">¡Ver Productos!</div>
             </a>
-            
+              
             <div class="slogans">
-                <span class="slogan3-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
-                <span class="slogan2-txt">Descubre las mejores herramientas para tus proyectos</span>
-                <span class="slogan1-txt">A TU SERVICIO</span>
+                <span class="slogan1-txt">A TU SERVICIO</span> 
+                <br> 
+                <span class="slogan2-txt">TENEMOS LOS MEJORES IMPLEMENTOS</span>
+                <br>
+                <span class="slogan3-txt">Descubre las mejores herramientas para tus proyectos.</span>                
+                           
             </div>
-        </div>
-
-        <!-- WhatsApp -->
-        <div class="wsp-container">
-            <span class="wsp-font">¿Necesitas ayuda? ¡Escríbenos!</span>
-            <div class="wsp-img"></div>
-        </div>
+        </section>
 
         <!-- Categorías más buscadas -->
-        <div class="buscados-container">
-            <div class="categoria">
-                <span class="manuales-font">Herramientas Manuales</span>
-                <div class="manuales-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="electricas-font">Herramientas Eléctricas</span>
-                <div class="electricas-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="basicos-font">Materiales Básicos</span>
-                <div class="basicos-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="medicion-font">Equipos de Medición</span>
-                <div class="medicion-img"></div>
-            </div>
-            <div class="categoria">
-                <span class="seguridad-font">Equipos de Seguridad</span>
-                <div class="seguridad-img"></div>
-            </div>
+        <section class="buscados-container">
             <span class="categorias-font">Categorías más buscadas</span>
-        </div>
+            <div class="categoria">
+                <div class="manuales-img"></div>
+                <span class="manuales-font">Herramientas Manuales</span>
+            </div>
+            <div class="categoria">
+                <div class="electricas-img"></div>
+                <span class="electricas-font">Herramientas Eléctricas</span>
+            </div>
+            <div class="categoria">
+                <div class="basicos-img"></div>
+                <span class="basicos-font">Materiales Básicos</span>
+            </div>
+            <div class="categoria">
+                <div class="medicion-img"></div>
+                <span class="medicion-font">Equipos de Medición</span>
+            </div>
+            <div class="categoria">
+                <div class="seguridad-img"></div>
+                <span class="seguridad-font">Equipos de Seguridad</span>
+            </div>
+            
+        </section>
+        {% endblock %}
 
-    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 </body>
 </html>

@@ -1,190 +1,142 @@
 /* === CONTENEDOR DE CATEGORÍAS MÁS BUSCADAS === */
 .buscados-container {
-  width: 896px;
-  height: 259px;
-  position: absolute;
-  top: 619px;
-  left: 492px;
-  overflow: visible;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 100%;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
 }
 
 .categorias-font {
-  width: 544px;
-  position: absolute;
-  top: 0;
-  left: 176px;
-  color: #343e49;
+  width: 100%;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
-  font-size: 41px;
-  text-align: left;
+  font-size: 36px;
+  color: #343e49;
+  margin-bottom: 20px;
 }
 
 /* Texto de cada categoría */
-.manuales-font, .electricas-font, .medicion-font, .basicos-font, .seguridad-font {
-  width: 123px;
-  position: absolute;
-  top: 217px;
-  color: #343e49;
+.categoria span {
+  display: block;
+  margin-top: 10px;
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 17px;
-  text-align: center;
-  transition: transform 0.3s ease;
+  color: #343e49;
 }
 
-.manuales-font { left: 0; }
-.electricas-font { left: 192px; }
-.basicos-font { left: 384px; }
-.medicion-font { left: 576px; }
-.seguridad-font { left: 773px; }
-
 /* Imágenes de cada categoría */
-.manuales-img, .electricas-img, .medicion-img, .basicos-img, .seguridad-img {
+.categoria div {
   width: 117px;
   height: 117px;
-  position: absolute;
-  top: 88px;
   border-radius: 50%;
   background-repeat: no-repeat;
-  background-size: 150%;
+  background-size: cover;
   background-position: center;
+  margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
-.manuales-img:hover,
-.electricas-img:hover,
-.medicion-img:hover,
-.basicos-img:hover,
-.seguridad-img:hover {
+.categoria div:hover {
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.manuales-img {
-  left: 3px;
-  background-image: url("../images/manuales-img.png");
-  background-size: 180%;
-  background-position: 0% 50%;
-}
-
-.electricas-img {
-  left: 195px;
-  background-image: url("../images/electricas-img.png");
-  background-position: 60% 50%;
-}
-
-.basicos-img {
-  left: 388px;
-  background-image: url("../images/basicos-img.png");
-  background-position: 60% 50%;
-}
-
-.medicion-img {
-  left: 580px;
-  background-image: url("../images/medicion-img.png");
-  background-size: 140%;
-  background-position: 30% 0%;
-}
-
-.seguridad-img {
-  left: 773px;
-  background-image: url("../images/seguridad-img.png");
-  background-size: 100%;
-  background-position: 30% 0%;
-  width: 116px;
-  height: 116px;
-}
+/* Imágenes específicas */
+.manuales-img { background-image: url("../images/manuales-img.png"); background-size: 180%; background-position: 0% 50%; }
+.electricas-img { background-image: url("../images/electricas-img.png"); background-position: 60% 50%; }
+.basicos-img { background-image: url("../images/basicos-img.png"); background-position: 60% 50%; }
+.medicion-img { background-image: url("../images/medicion-img.png"); background-size: 140%; background-position: 30% 0%; }
+.seguridad-img { background-image: url("../images/seguridad-img.png"); background-size: 100%; background-position: 30% 0%; }
 
 /* === BANNER === */
 .banner {
   width: 100%;
-  height: 421px;
-  position: absolute;
-  top: 141px;
+  height: auto;
+  position: relative;
   overflow: hidden;
+  margin-bottom: 40px;
 }
 
 .bannerImg {
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: url("../images/banner.png") center 40% / 150% auto no-repeat;
-  overflow: hidden;
+  height: 421px;
+  background: url("../images/banner.png") center 40% / cover no-repeat;
 }
 
-/* Texto del banner */
-.slogan1-txt, .slogan2-txt, .slogan3-txt {
+.slogans {
   position: absolute;
-  left: 1193px;
+  top: 20px;
+  right: 5%;
+  max-width: 600px;
   color: #fff;
-  font-family: Montserrat;
   text-shadow: 0 3px 3px rgba(0, 0, 0, 0.79);
-  text-align: left;
-  opacity: 1;
+  font-family: Montserrat;
 }
 
 .slogan1-txt {
-  width: 591px;
-  top: 30px;
   font-weight: 600;
-  font-size: 38px;
+  font-size: 32px;
+  margin-bottom: 8px;
 }
 
 .slogan2-txt {
-  width: 685px;
-  top: 85px;
   font-weight: 800;
-  font-size: 55px;
+  font-size: 48px;
+  margin-bottom: 8px;
 }
 
 .slogan3-txt {
-  width: 683px;
-  top: 305px;
   font-weight: 600;
-  font-size: 26px;
+  font-size: 24px;
+  margin-top: 16px;
 }
 
 /* Botón del banner */
-.btn-prod {
-  width: 274px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.75);
+.btn-prod-link {
   position: absolute;
-  top: 360px;
-  left: 1548px;
-  border-radius: 3px;
-  cursor: pointer;
+  bottom: 20px;
+  right: 5%;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-prod {
+  width: 100%;
+  max-width: 250px;
+  padding: 12px 20px;
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 .btn-prod:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background-color: #333;
 }
 
+
 .btn-prod-txt {
-  width: 241px;
-  position: absolute;
-  top: 372px;
-  left: 1564px;
   color: #fff;
   font-family: Montserrat;
   font-weight: 700;
   font-size: 20px;
-  text-align: center;
+  line-height: 50px;
   pointer-events: none;
-  transition: transform 0.3s ease;
+  display: block;
 }
 
-.btn-prod:hover + .btn-prod-txt {
-  transform: scale(1.05);
-}
-
-/* === Manejo de sesion === */
-
+/* === Manejo de sesión === */
 .user-dropdown {
   position: relative;
   display: inline-block;
@@ -195,7 +147,7 @@
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 5px;
 }
@@ -209,9 +161,52 @@
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
-  border-radius: 5px;
 }
 
 .user-dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .buscados-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .slogans {
+    position: relative;
+    top: auto;
+    right: auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .btn-prod-link {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 20px;
+  }
+
+  .bannerImg {
+    height: 300px;
+  }
+
+  .slogan1-txt {
+    font-size: 24px;
+  }
+
+  .slogan2-txt {
+    font-size: 32px;
+  }
+
+  .slogan3-txt {
+    font-size: 20px;
+  }
+
+  .btn-prod, .btn-prod-txt {
+    width: 80%;
+  }
 }
